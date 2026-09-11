@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-10T22:47:49+00:00",
- "window_from": "2024-09-20",
+ "generated": "2026-09-11T01:08:06+00:00",
+ "window_from": "2024-09-21",
  "sources_failed": [],
  "min_score": 5,
  "license": "Incident records and MIT classifications from the AI Incident Database (incidentdatabase.ai), CC BY-SA. OECD entries from the OECD AI Incidents Monitor (oecd.ai/en/incidents).",
@@ -34,82 +34,6 @@
     "agent",
     "autonomous"
    ]
-  },
-  {
-   "id": "aiid-1646",
-   "source": "AI Incident Database",
-   "date": "2026-07-01",
-   "title": "Suspected China-Linked Hackers Reportedly Used AI Agents to Compromise Taiwanese Government Systems and Exfiltrate Personnel Records",
-   "summary": "From July 1–4, 2026, suspected China-linked hackers reportedly used a multi-agent framework built on Hermes and OpenClaw to compromise Taiwanese government systems. The agents reportedly compromised 85 credentials and used persistent access to connected systems to exfiltrate more than 2,564 personnel records. Taiwan later confirmed an overseas AI-assisted campaign against government agencies, without attributing it to China.",
-   "url": "https://incidentdatabase.ai/cite/1646/",
-   "score": 5,
-   "matched": [
-    "exfiltrat",
-    "ai agent",
-    "agent",
-    "agents"
-   ],
-   "risk": null
-  },
-  {
-   "id": "aiid-1670",
-   "source": "AI Incident Database",
-   "date": "2026-05-10",
-   "title": "Threat Actor Reportedly Used LLM Agent to Exfiltrate Internal Database After Compromising marimo Python Notebook",
-   "summary": "An unidentified attacker reportedly used an LLM agent during a May 10 intrusion after exploiting a vulnerable marimo Python notebook. The agent reportedly reused harvested AWS credentials to obtain an SSH key, then pivoted through a bastion host and exfiltrated the schema and contents of an internal PostgreSQL database. Sysdig attributed the post-compromise command stream to real-time agent execution rather than a prebuilt script.",
-   "url": "https://incidentdatabase.ai/cite/1670/",
-   "score": 5,
-   "matched": [
-    "exfiltrat",
-    "agent",
-    "llm",
-    "database"
-   ],
-   "risk": null
-  },
-  {
-   "id": "aiid-1238",
-   "source": "AI Incident Database",
-   "date": "2025-10-10",
-   "title": "OpenAI ChatGPT Models Reportedly Jailbroken to Provide Chemical, Biological, and Nuclear Weapons Instructions",
-   "summary": "An NBC News investigation found that OpenAI's language models o4-mini, GPT-5-mini, oss-20b, and oss-120b could be jailbroken under normal usage conditions to bypass safety guardrails and generate detailed instructions for creating chemical, biological, and nuclear weapons. Using a publicly documented jailbreak prompt, reporters repeatedly elicited hazardous outputs such as steps to synthesize pathogens or maximize harm with chemical agents. The findings reportedly revealed significant real-world safeguard failures, prompting OpenAI to commit to further mitigation measures.",
-   "url": "https://incidentdatabase.ai/cite/1238/",
-   "score": 6,
-   "matched": [
-    "agent",
-    "agents",
-    "language model",
-    "safety",
-    "guardrail",
-    "instructions"
-   ],
-   "risk": {
-    "domain": "4. Malicious Actors & Misuse",
-    "subdomain": "4.2. Cyberattacks, weapon development or use, and mass harm",
-    "entity": "AI",
-    "intent": "Unintentional"
-   }
-  },
-  {
-   "id": "aiid-1210",
-   "source": "AI Incident Database",
-   "date": "2025-08-21",
-   "title": "Malicious Nx npm Packages Reportedly Weaponize AI Coding Agents for Data Exfiltration",
-   "summary": "Malicious versions of the popular Nx monorepo tool and plugins were reportedly published to npm after attackers compromised its CI workflow. The malware's postinstall script reportedly harvested credentials and exfiltrated data, reportedly weaponizing local AI coding agents such as Claude Code, Gemini, and Amazon q. By invoking unsafe flags, it allegedly coerced the tools into scanning developer machines for sensitive files, marking one of the first known AI-assisted supply chain attacks.",
-   "url": "https://incidentdatabase.ai/cite/1210/",
-   "score": 6,
-   "matched": [
-    "exfiltrat",
-    "coding agent",
-    "agent",
-    "agents"
-   ],
-   "risk": {
-    "domain": "2. Privacy & Security",
-    "subdomain": "2.2. AI system security vulnerabilities and attacks",
-    "entity": "AI",
-    "intent": "Unintentional"
-   }
   }
  ]
 }

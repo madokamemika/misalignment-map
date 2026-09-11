@@ -43,7 +43,23 @@ match awaiting a human reading.
 - the [OECD AI Incidents Monitor](https://oecd.ai/en/incidents).
 
 It scores entries against a misalignment vocabulary, drops anything already on
-the map, and writes the rest to the queue. `.github/workflows/` runs it on
+the map, and writes the rest to the queue.
+
+The hard part is not finding incidents, it is telling two sentences apart:
+*an agent exfiltrated a database* and *an attacker used an agent to exfiltrate
+a database* share almost every word. Misuse terms therefore score −4, hard
+enough to sink an entry on their own, and evaluation-context terms score +2,
+because an attacker's write-up never mentions the evaluation the model was
+inside. Measured against the eighteen AI Incident Database records that are
+already episodes on the map, the filter now recalls sixteen; the four
+human-misuse entries that had been sitting in the queue score −2 to −17 and
+are gone.
+
+The two it still misses are worth naming, because they are the shape of what
+this instrument cannot see: an agent that cancelled a stranger's gym booking,
+and an internal assistant that posted bad advice to a company forum. Neither
+write-up contains a destructive verb or an evaluation, so no keyword net will
+raise them. They reached the map because someone read the database by hand. `.github/workflows/` runs it on
 Thursdays. Run it yourself with:
 
 ```sh

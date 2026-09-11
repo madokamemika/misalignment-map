@@ -21,8 +21,10 @@ writes carries the same licence and the attribution with it.
 Both are filtered against VOCAB: an entry is kept when it scores at least
 MIN_SCORE, counting distinct matched terms: AGENTIC terms weigh double
 because "AI incident" alone is mostly bias, defamation and fabricated
-citations, not misalignment, and ADVOCACY terms weigh -3 because a warning
-about agents is written in the same words as an incident involving one. Everything kept lands in an inbox the page shows
+citations, not misalignment; ADVOCACY terms weigh -3 because a warning about
+agents is written in the same words as an incident involving one; and MISUSE
+terms weigh -4 because an attacker wielding an agent is not the subject of
+this corpus, however agentic the sentence describing it. Everything kept lands in an inbox the page shows
 separately — nothing here enters the graph on the strength of a keyword.
 
 Three things will surprise you:
@@ -106,12 +108,38 @@ AGENTIC = [
     "ignored instructions", "deleted production", "destroyed production",
     "deleted the production", "code freeze", "fabricated test",
 ]
+# An attacker's write-up does not mention the evaluation the model was inside,
+# because there wasn't one. These terms are the cheapest available signal that
+# the actor was the model rather than a person holding it, so they weigh as
+# much as the agentic vocabulary itself.
+EVAL_CONTEXT = [
+    "evaluation", "cybersecurity evaluation", "red team", "sandbox",
+    "testing environment", "test environment", "during testing",
+    "training run", "reinforcement learning", "unsanctioned", "unintended",
+    "beyond the sandbox", "exceeded", "of its own", "on its own",
+    "not requested", "without being asked", "production infrastructure",
+]
 SUPPORTING = [
     "ai agent", "agent", "agents", "llm", "language model", "frontier model",
-    "evaluation", "red team", "alignment", "safety", "guardrail", "oversight",
-    "sandbox", "instructions", "goal", "autonomy", "shutdown", "autonomous",
-    "production", "database", "backup", "terraform",
+    "alignment", "safety", "guardrail", "oversight", "instructions", "goal",
+    "autonomy", "shutdown", "autonomous", "production", "database", "backup",
+    "terraform", "compromised",
 ]
+# The distinction the whole corpus rests on, and the one the vocabulary cannot
+# make on its own: "an agent exfiltrated a database" and "an attacker used an
+# agent to exfiltrate a database" share almost every word. Four of the first
+# five entries that survived every other filter were this — a threat actor
+# driving agents, a jailbreak, a poisoned package — so misuse is scored hard
+# enough to sink an entry on its own.
+MISUSE = [
+    "threat actor", "attacker", "attackers", "hacker", "hackers", "cybercrim",
+    "state-sponsored", "state-linked", "china-linked", "russia-linked",
+    "jailbroken", "jailbreak", "weaponize", "weaponise", "malicious package",
+    "malicious versions", "supply-chain attack", "supply chain attack",
+    "phishing", "extortion", "scam", "fraudster", "deepfake", "impersonat",
+    "poisoned", "prompt injection attack", "compromised its ci", "ransomware",
+]
+
 # Forecasts, warnings and calls for regulation are written in the same words
 # as the incidents they are about, and the monitors carry a lot of them.
 ADVOCACY = [
@@ -119,8 +147,9 @@ ADVOCACY = [
     "could boost", "report finds", "study finds", "survey", "predicts",
     "forecast", "op-ed", "guidelines", "framework for",
 ]
-VOCAB = ([(t, 2) for t in AGENTIC] + [(t, 1) for t in SUPPORTING]
-         + [(t, -3) for t in ADVOCACY])
+VOCAB = ([(t, 2) for t in AGENTIC] + [(t, 2) for t in EVAL_CONTEXT]
+         + [(t, 1) for t in SUPPORTING]
+         + [(t, -3) for t in ADVOCACY] + [(t, -4) for t in MISUSE])
 
 # Events already on the map, named by the event and never by the vendor. A
 # vendor-wide marker ("claude", "openai agents") looks tidy and quietly hides
