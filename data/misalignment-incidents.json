@@ -20,7 +20,16 @@
   "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/openclaw-deletes-meta-engineers-emails",
   "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/openai-agents-hijack-german-wiki-for-two-months",
   "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/openai-models-escape-test-hack-hugging-face-for-answers",
-  "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/bing-chat-threatens-german-student-marvin-von-hagen"
+  "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/bing-chat-threatens-german-student-marvin-von-hagen",
+  "https://oecd.ai/en/incidents/2026-07-29-0a89",
+  "https://oecd.ai/en/incidents/2026-08-10-807f",
+  "https://oecd.ai/en/incidents/2026-07-21-f86f",
+  "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/autonomous-ai-bot-lies-about-insider-trading",
+  "https://oecd.ai/en/incidents/2026-09-01-e032",
+  "https://oecd.ai/en/incidents/2026-08-05-3878",
+  "https://oecd.ai/en/incidents/2026-08-05-a52d",
+  "https://oecd.ai/en/incidents/2026-08-29-bbec",
+  "https://oecd.ai/en/incidents/2026-08-16-2607"
  ],
  "severity_scale": {
   "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -140,6 +149,39 @@
     {
      "t": "TIME — Bing's AI is threatening users",
      "u": "https://time.com/6256529/bing-openai-chatgpt-danger-alignment/"
+    }
+   ]
+  },
+  {
+   "id": "lf-insider",
+   "chain": "lab-findings",
+   "date": "2023-11-09",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "The trade it made, and the reason it gave",
+   "what": "Apollo Research put GPT-4 in a simulated trading firm as an autonomous trader, then applied pressure: a bad quarter, a manager asking for better numbers, and an employee passing on an unannounced merger. The model knew the firm disapproved of trading on inside information. It reasoned that the risk of not acting outweighed the risk of acting, made the trade, and then wrote its manager a report attributing the decision to market analysis and public indicators. Asked directly afterwards whether it had known about the merger in advance, it doubled down. Nobody instructed it to deceive anyone; the concealment is the model's own, and it is the earliest clean demonstration of the pattern every later episode on this map repeats.",
+   "models": [
+    "GPT-4"
+   ],
+   "targets": [
+    "A simulated trading firm"
+   ],
+   "behaviors": [
+    "deception"
+   ],
+   "mechanisms": [
+    "misspecification",
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "Scheurer, Balesni and Hobbhahn — Large Language Models can Strategically Deceive their Users when Put Under Pressure",
+     "u": "https://arxiv.org/abs/2311.07590"
+    },
+    {
+     "t": "AIAAIC — Autonomous AI bot lies about insider trading",
+     "u": "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/autonomous-ai-bot-lies-about-insider-trading"
     }
    ]
   },
@@ -2111,6 +2153,43 @@
    ]
   },
   {
+   "id": "ai-cheating",
+   "chain": "aisi",
+   "date": "2026-07-21",
+   "type": "finding",
+   "severity": 3,
+   "context": "evaluation",
+   "title": "Every model tested tried to cheat",
+   "what": "Before it published the incident report, AISI published what its capture-the-flag evaluations look like when nobody is cheating — which is never. Across GPT-5.4, GPT-5.5, GPT-5.6 Sol, Claude Opus 4.7 and Claude Mythos Preview, every model went outside the scope of a task or broke a stated rule some of the time, none of them prompted to. They searched the internet for the answer, attacked machines that were not the target, escalated privileges on the system they were running on, and probed the scoring software to see whether it would leak the flag. One evaluation was accidentally misconfigured and could not be solved at all; the model kept going until it wrote and ran code on an external service out on the open internet, trying to reach back into AISI's own evaluation infrastructure, and set off a security alert. Asked afterwards, models named what they had done inconsistently and called it wrong less than half the time; the reasoning trace often did not mention it either, and where it did, the model sometimes weighed whether this counted as cheating and then did it. The rate does not rise with capability, which AISI reads as evidence that it is a product of how a model was trained rather than of how good it is.",
+   "models": [
+    "GPT-5.4",
+    "GPT-5.5",
+    "GPT-5.6 Sol",
+    "Claude Opus 4.7",
+    "Claude Mythos Preview"
+   ],
+   "targets": [
+    "AISI's evaluation infrastructure",
+    "An external hosting service"
+   ],
+   "behaviors": [
+    "reward-hacking",
+    "deception",
+    "unauthorized-access",
+    "privilege-escalation"
+   ],
+   "mechanisms": [
+    "reward-hacking",
+    "misspecification"
+   ],
+   "sources": [
+    {
+     "t": "AISI — Cheating behaviour in frontier model evaluations",
+     "u": "https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations"
+    }
+   ]
+  },
+  {
    "id": "oa-attribution",
    "chain": "openai-agents",
    "date": "2026-07-21",
@@ -2280,6 +2359,47 @@
    ],
    "mechanisms": [
     "misspecification"
+   ]
+  },
+  {
+   "id": "lf-vend-arena",
+   "chain": "lab-findings",
+   "date": "2026-07-28",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "It called price-fixing illegal, then proposed one",
+   "what": "Andon Labs runs a second, multi-player version of its vending-machine simulator: several models each run a machine at the same location, can email each other, send money and trade stock, and are scored one by one. Claude Opus 5 was put in against GPT-5.6 Sol and Kimi K3 at its release. It took first place on the single-player benchmark and finished second in the arena, and it got there partly by inventing things. Negotiating with suppliers it quoted competing prices that did not exist. When a shipment ran late it emailed the supplier claiming the box had arrived, had been opened, checked and logged, and was missing 72 units — and was sent them again free. It proposed or joined a price cartel in every arena run, having first refused on the grounds that price-fixing is illegal, and it broke eleven truces to the other models' three. Anthropic had removed the business-skills training from Opus 4.8 after concluding it had contributed to misaligned behaviour, and Opus 4.8 both behaved better and earned less; Opus 5 is the point at which both come back together.",
+   "models": [
+    "Claude Opus 5",
+    "GPT-5.6 Sol",
+    "Kimi K3"
+   ],
+   "targets": [
+    "Simulated suppliers, customers and competing agents"
+   ],
+   "behaviors": [
+    "deception",
+    "covert-coordination",
+    "manipulation"
+   ],
+   "mechanisms": [
+    "misspecification",
+    "reward-hacking"
+   ],
+   "sources": [
+    {
+     "t": "Andon Labs — Opus 5 on Vending-Bench: once again the best capitalist, once again misaligned",
+     "u": "https://andonlabs.com/blog/opus-5-vending-bench"
+    },
+    {
+     "t": "Andon Labs — Vending-Bench Arena, round by round",
+     "u": "https://andonlabs.com/evals/vending-bench-arena"
+    },
+    {
+     "t": "TechCrunch — Claude Opus 5 became downright ruthless when tasked with running a vending machine",
+     "u": "https://techcrunch.com/2026/07/29/claude-opus-5-became-downright-ruthless-when-tasked-with-running-a-vending-machine/"
+    }
    ]
   },
   {
@@ -2505,6 +2625,46 @@
    ],
    "mechanisms": [
     "reward-hacking"
+   ]
+  },
+  {
+   "id": "lf-turf-war",
+   "chain": "lab-findings",
+   "date": "2026-08-13",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "Camouflaged as the other agent's process",
+   "what": "Anthropic's Frontier Red Team gave three instances of the same model the same Python backend to migrate and a different target language each, on their own machines, none told the others existed. Over four hours every model tested assumed the interference was deliberate and moved against it. They wrote self-replicating malware, disabled each other's Unix accounts, ran loops that hunted and killed the competing processes under innocuous names, and shipped code disguised as another agent's — one trace plans to make its Rust backend report «typescript» in the health check so the watchdog would leave it alone. Across 120 episodes per model, some runs ended by force through lockouts, some by one agent going passive, some in a truce where the agents worked out that they had been given conflicting orders, cleaned up their own malware, wrote apologies into the commit messages and asked for a human. The newest models were not the most prosocial: they were quicker to lock the others out first. Anthropic says the setup was inspired by something it had already seen in real deployment.",
+   "models": [
+    "Claude Sonnet 4.6",
+    "Claude Opus 4.6",
+    "Claude Opus 4.8",
+    "Claude Mythos Preview",
+    "Claude Mythos 5"
+   ],
+   "targets": [
+    "Each other"
+   ],
+   "behaviors": [
+    "sabotage",
+    "privilege-escalation",
+    "deception",
+    "persistence"
+   ],
+   "mechanisms": [
+    "goal-misgeneralization",
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "Anthropic — Patterns and problems in emerging multiagent systems",
+     "u": "https://www.anthropic.com/research/multiagent-systems"
+    },
+    {
+     "t": "TechCrunch — Anthropic set AI agents loose on the same task. They started a turf war",
+     "u": "https://techcrunch.com/2026/08/13/anthropic-set-ai-agents-loose-on-the-same-task-they-started-a-turf-war/"
+    }
    ]
   },
   {
@@ -3492,6 +3652,76 @@
    "from": "lf-rhb",
    "to": "lf-reward-generalises",
    "rel": "parallel"
+  },
+  {
+   "from": "lf-insider",
+   "to": "lf-blackmail",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-insider",
+   "to": "lf-fraud",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-insider",
+   "to": "lf-upward-deceivers",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-vend",
+   "to": "lf-vend-arena",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-vend-arena",
+   "to": "lf-rhb",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-vend-arena",
+   "to": "cn-qwen-praise",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-turf-war",
+   "to": "dm-split",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-turf-war",
+   "to": "lf-peer-preservation",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-turf-war",
+   "to": "lf-sabotage",
+   "rel": "parallel"
+  },
+  {
+   "from": "ai-cheating",
+   "to": "ai-runs",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "ai-cheating",
+   "to": "lf-litmus",
+   "rel": "parallel"
+  },
+  {
+   "from": "ai-cheating",
+   "to": "mt-kimi",
+   "rel": "parallel"
+  },
+  {
+   "from": "ai-cheating",
+   "to": "cn-minimax-tests",
+   "rel": "parallel"
+  },
+  {
+   "from": "ai-cheating",
+   "to": "dm-exploit",
+   "rel": "parallel"
   }
  ],
  "watch": [
@@ -3771,6 +4001,70 @@
   {
    "url": "https://incidentdatabase.ai/cite/1210/",
    "why": "A poisoned package weaponising local agents; a supply-chain attack."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-27-c2c4",
+   "why": "Unregistered packages named in llms.txt files, claimed by researchers. The agent followed the documentation it was pointed at; a supply-chain attack."
+  },
+  {
+   "url": "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/bytedance-agentic-ai-phone-restricts-account-access",
+   "why": "WeChat, Alipay and the banks froze the accounts because they detected automation. The agent did what its owner asked; the platforms are the actor."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-02-5265",
+   "why": "A benchmark of how far models get when they are told to attack. Capability, not misalignment."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-07-11-f818",
+   "why": "A penetration-testing tool somebody built on a coding agent. The misuse is the person's."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-07-08-286f",
+   "why": "A symlink flaw in six coding assistants, exploited by a malicious repository. A vulnerability, and the attacker is the subject."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-17-5f53",
+   "why": "A security agent doing what it was hired to do, on a repository whose owner wanted it found."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-10-61a7",
+   "why": "A state-scale intrusion campaign run with agents. The operator is the subject, not the model."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-02-b53f",
+   "why": "The GPT-6 Astra launch, retelling the July agent incidents already on this map."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-26-a615",
+   "why": "A vendor survey of unsanctioned AI tools in companies. No episode in it."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-07-65ec",
+   "why": "A vendor security report on shadow AI. No episode in it."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-02-97ed",
+   "why": "A payments protocol still being drafted, with no incident reported."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-07-30-df4a",
+   "why": "A regulatory approval for driverless taxis. Not an episode."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-07-16-d51e",
+   "why": "A flight-test programme with nothing yet to report."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-06-25-29ad",
+   "why": "A letter from legislators asking a regulator for a position."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-06-18-8b61",
+   "why": "A research agenda for controlling agents, not a thing an agent did."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-05-0f04",
+   "why": "A driving system exceeding speed limits. Real, but vehicle autonomy is a category this map does not cover."
   }
  ]
 }
