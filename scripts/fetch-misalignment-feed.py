@@ -14,6 +14,10 @@ Three keyless public sources:
   Tracker (https://airisk.mit.edu/ai-incident-tracker).
 - **OECD AI Incidents Monitor** — the server-rendered search page, one
   `card--incident` block per entry.
+- **AIAAIC** — the AI, Algorithmic and Automation Incidents and Controversies
+  repository, a Google Sites index of every entry as a link. It is the only
+  register besides AIID that carries cases this corpus wants, and it is the
+  one place several of them appeared first.
 
 AIID's incidents and classifications are licensed CC BY-SA, so the file this
 writes carries the same licence and the attribution with it.
@@ -41,6 +45,18 @@ Three things will surprise you:
 - **The OECD page needs its whole query string.** A bare /en/incidents 302s
   to a URL carrying date range, ordering and an empty properties_config, and
   serves nothing without them.
+- **AIAAIC publishes no summary in its index.** The repository page is 2,155
+  links and nothing else, so the slug is all there is to filter on before
+  paying for a page fetch. Slugs are written as sentences — the register's own
+  headline, hyphenated — which is enough to sort an agent deleting a drive from
+  a deepfake, and AIAAIC_FETCH_MAX caps how many pages one run will open. Its
+  dates are months, not days, and go into the queue as written.
+- **The OECD monitor serves 100 cards and no second page.** There is no
+  offset, page or cursor parameter, and num_results above 100 returns an
+  empty page; the autonomy_levels filter in properties_config is applied in
+  the browser, not on the server, so it changes nothing a script can see.
+  Ordered by date those 100 cards cover about a week, so the window is read
+  in slices and a full slice is halved and re-read.
 - **A curated episode must not come back as news.** Anything whose URL is
   already cited in data/misalignment-incidents.json is dropped, as is
   anything matching CURATED_MARKERS — the events on the map are reported by
@@ -66,7 +82,7 @@ import sys
 import tarfile
 import urllib.error
 import urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import date as date_cls, datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_PATH = os.path.join(ROOT, "data", "misalignment-feed.json")
@@ -87,10 +103,32 @@ OECD_URL = (
     "&order_by=date&num_results=100"
 )
 OECD_SITE = "https://oecd.ai"
+AIAAIC_INDEX = "https://www.aiaaic.org/aiaaic-repository"
+AIAAIC_ENTRY = AIAAIC_INDEX + "/ai-algorithmic-and-automation-incidents/"
+# Slugs worth paying a page fetch for. Deliberately generous: this only
+# decides what gets read, and the score decides what gets kept.
+AIAAIC_SLUG_RE = re.compile(
+    r"agent|autonom|rogue|scheme|deceiv|deception|lying|blackmail|sabotage|"
+    r"exfiltrat|delet|wipe|bypass|circumvent|guardrail|shutdown|refus|disobey|"
+    r"unauthoris|unauthoriz|self-|reward-hack|misalign|sandbox|unintend|"
+    r"unprompted|escape|its-own|without-permission|goes-rogue")
+AIAAIC_FETCH_MAX = 40
+# The monitor caps a response at 100 cards and has no way to ask for the
+# next 100, so the window is read in slices this many days wide.
+OECD_SLICE_DAYS = 7
+OECD_PAGE_MAX = 100
+OECD_MAX_DEPTH = 4
 
 UA = "goveronica.com misalignment map (contact: madokamemika@gmail.com)"
 TIMEOUT = 90
-MONTHS_BACK = 24
+# The job runs weekly, so the window only has to cover what is new plus a
+# generous margin for a database that back-dates its entries. It used to be 24
+# months, which was harmless only while the OECD stage could not see past its
+# last week anyway; now that the window is actually read, two years of press
+# about episodes already on the map arrives every Thursday and buries the few
+# entries worth reading. SWEEP_MONTHS=24 restores the wide window for a
+# one-off backfill.
+MONTHS_BACK = int(os.environ.get("SWEEP_MONTHS", "3"))
 MAX_ITEMS = 60
 MIN_SCORE = 5
 
@@ -146,6 +184,17 @@ ADVOCACY = [
     "warns", "warned", "calls for", "urges", "raises alarm", "could pose",
     "could boost", "report finds", "study finds", "survey", "predicts",
     "forecast", "op-ed", "guidelines", "framework for",
+    # A launch is the largest single class the OECD monitor files alongside
+    # incidents — it logs the arrival of an autonomous product as a hazard,
+    # and the write-up is full of the same words an incident uses. Nothing
+    # has happened yet, so none of it belongs in a queue of things that did.
+    # Kept deliberately narrow. "raises concerns" and "threatens" read as
+    # announcement language and are also how half the incident write-ups end,
+    # so they are not here: one pass with them in silently dropped a real case.
+    "launches", "launched", "launch of", "unveils", "unveiled", "announces",
+    "rolls out", "plans to", "is planning", "considers", "receives approval",
+    "begins testing", "starts testing", "pilot programme", "pilot program",
+    "roadmap", "outpaces",
 ]
 VOCAB = ([(t, 2) for t in AGENTIC] + [(t, 2) for t in EVAL_CONTEXT]
          + [(t, 1) for t in SUPPORTING]
@@ -159,6 +208,17 @@ VOCAB = ([(t, 2) for t in AGENTIC] + [(t, 2) for t in EVAL_CONTEXT]
 CURATED_MARKERS = [
     "hugging face", "dsewiki", "dse wiki", "german wiki", "german programming wiki",
     "wiki incident", "rathbun", "matplotlib", "artifactory", "openai bots escape",
+    # Reading the OECD monitor in full turned every one of these into a dozen
+    # write-ups of an episode already on the map. Each phrase names an event,
+    # not a behaviour, so none of them can hide a new case.
+    "escape sandbox", "escapes sandbox", "escape sandboxes", "escaping containment",
+    "escape containment", "escapes containment", "escape test", "escapes test",
+    "escape their test", "breach external systems", "breached external",
+    "breach real systems", "hack corporate systems", "hacks corporate",
+    "hack external systems", "autonomously hack", "unauthorized cyberattack",
+    "unauthorised cyberattack", "kimi k3", "peer-preservation", "peer preservation",
+    "loss of control observatory", "pocketos", "gym booking", "melbourne gym",
+    "deletes user files and databases", "skynet day", "ai kill switch",
 ]
 
 
@@ -183,6 +243,8 @@ def curated_urls():
     with open(CURATED_PATH, encoding="utf-8") as f:
         data = json.load(f)
     urls = {u.rstrip("/") for u in data.get("feed_placed", [])}
+    # A candidate that was read and turned down must not come back next week.
+    urls |= {r["url"].rstrip("/") for r in data.get("feed_rejected", [])}
     for ep in data["episodes"]:
         for s in ep.get("sources", []):
             urls.add(s["u"].rstrip("/"))
@@ -298,28 +360,188 @@ def strip_tags(fragment):
     return html.unescape(re.sub(r"<[^>]+>", " ", fragment))
 
 
-def fetch_oecd(cutoff, today):
-    page = get(OECD_URL.format(frm=cutoff, to=today))
+# Every OECD card prints the monitor's own reading of how much of the action
+# was the machine's. It is a gate, not a score: a card the monitor files as
+# human-in-the-loop or advisory is dropped however it scores, because somebody
+# approved the act. It must not be read the other way round — half the cards
+# in any week are high-action, so rewarding the label admits every write-up
+# about agents along with the agents.
+AUTONOMY_RE = re.compile(r"Autonomy level:\s*(?:</?[^>]+>\s*)*([A-Za-z][^<]{3,60})")
+AUTONOMY_EXCLUDED = ("low-action", "no-action")
+
+
+def autonomy_label(fragment):
+    m = AUTONOMY_RE.search(fragment)
+    if not m:
+        return None
+    return " ".join(strip_tags(m.group(1)).split())
+
+
+def oecd_slice(frm, to):
+    """One OECD request. Returns every card on the page, unscored."""
+    page = get(OECD_URL.format(frm=frm, to=to))
     out = []
     for path, title, date, rest in CARD_RE.findall(page):
         title = " ".join(strip_tags(title).split())
         body = re.search(r'class="incident-summary".*?<p[^>]*>(.*?)</p>', rest, re.S)
         summary = " ".join(strip_tags(body.group(1)).split()) if body else ""
-        summary = summary.replace("[AI generated]", "").strip()
+        out.append((path, title, date,
+                    summary.replace("[AI generated]", "").strip(),
+                    autonomy_label(rest)))
+    return out
+
+
+def fetch_oecd(cutoff, today):
+    """Walk the window in slices, because one request only ever returns 100.
+
+    The monitor serves at most OECD_PAGE_MAX cards and offers no offset,
+    page or cursor parameter of any kind; num_results above that returns an
+    empty page. Ordered by date, those 100 cards covered seven days when this
+    was written, so a single request over a two-year window silently reports
+    on its last week. Slicing the window is the only way through. A slice that
+    comes back full is split in half and re-read, so a busy week cannot hide
+    entries behind the cap.
+    """
+    out, seen = [], set()
+
+    def walk(frm, to, depth=0):
+        cards = oecd_slice(str(frm), str(to))
+        if len(cards) >= OECD_PAGE_MAX and depth < OECD_MAX_DEPTH and (to - frm).days > 1:
+            mid = frm + (to - frm) / 2
+            walk(frm, mid, depth + 1)
+            walk(mid, to, depth + 1)
+            return
+        for path, title, date, summary, label in cards:
+            if path in seen:
+                continue
+            seen.add(path)
+            if label and label.lower().startswith(AUTONOMY_EXCLUDED):
+                continue
+            total, hits = score(f"{title} {summary}")
+            if total < MIN_SCORE:
+                continue
+            if label:
+                hits = hits + [label]
+            out.append({
+                "id": "oecd-" + path.rsplit("/", 1)[-1],
+                "source": "OECD AI Incidents Monitor",
+                "date": date,
+                "title": title,
+                "summary": summary[:600],
+                "url": OECD_SITE + path,
+                "score": total,
+                "matched": hits[:8],
+            })
+
+    start = date_cls.fromisoformat(cutoff)
+    end = date_cls.fromisoformat(today)
+    step = timedelta(days=OECD_SLICE_DAYS)
+    cursor = start
+    while cursor < end:
+        walk(cursor, min(cursor + step, end))
+        cursor += step
+    return out
+
+
+# Entries carry "Occurred: <Month Year>"; a few older ones only ever got a
+# "Page published:" line, which is the later of the two and says so.
+AIAAIC_DATE_RE = re.compile(
+    r"(?:Occurred|Page published):\s*([A-Z][a-z]+ \d{4}|\d{4})")
+
+
+def fetch_aiaaic(known):
+    """Read AIAAIC's index, then only the pages whose slug looks relevant.
+
+    The index carries no dates and no summaries, so an entry cannot be scored
+    without opening it; the slug filter is what keeps that bounded. Anything
+    already cited in the corpus is skipped before the fetch, not after.
+    """
+    index = get(AIAAIC_INDEX)
+    slugs = sorted(set(re.findall(
+        r"/aiaaic-repository/ai-algorithmic-and-automation-incidents/([a-z0-9\-]+)",
+        index)))
+    STATS["aiaaic_entries"] = len(slugs)
+    out, opened = [], 0
+    for slug in slugs:
+        if opened >= AIAAIC_FETCH_MAX:
+            break
+        if not AIAAIC_SLUG_RE.search(slug):
+            continue
+        url = AIAAIC_ENTRY + slug
+        if url.rstrip("/") in known:
+            continue
+        try:
+            page = get(url)
+        except (urllib.error.URLError, TimeoutError, OSError):
+            continue
+        opened += 1
+        text = " ".join(strip_tags(page).split())
+        head = re.search(r"<title>(.*?)</title>", page, re.S)
+        title = " ".join(strip_tags(head.group(1)).split()) if head else ""
+        title = re.sub(r"^AIAAIC\s*[-–]\s*", "", title) or slug.replace("-", " ")
+        when = AIAAIC_DATE_RE.search(text)
+        body = re.search(r"Report incident.{0,80}?Access database\s*(.{80,900})", text)
+        summary = body.group(1).strip() if body else ""
+        summary = summary.lstrip("🔢 ").strip()
         total, hits = score(f"{title} {summary}")
         if total < MIN_SCORE:
             continue
         out.append({
-            "id": "oecd-" + path.rsplit("/", 1)[-1],
-            "source": "OECD AI Incidents Monitor",
-            "date": date,
+            "id": "aiaaic-" + slug[:60],
+            "source": "AIAAIC",
+            "date": when.group(1) if when else "undated",
             "title": title,
             "summary": summary[:600],
-            "url": OECD_SITE + path,
+            "url": url,
             "score": total,
             "matched": hits[:8],
         })
+    STATS["aiaaic_opened"] = opened
     return out
+
+
+# Words that carry no event. Two write-ups of the same incident share their
+# nouns and differ in everything else, so these are dropped before comparing.
+STOPWORDS = frozenset("""
+a an and are as at be been by during for from has have in into is it its of on
+or over that the their to under with without after against amid ai artificial
+intelligence model models system systems new report reports says said
+""".split())
+
+
+def title_key(title):
+    return frozenset(w for w in re.findall(r"[a-z0-9]+", title.lower())
+                     if len(w) > 2 and w not in STOPWORDS)
+
+
+def collapse_retellings(items, threshold=0.5):
+    """One incident, a dozen write-ups: keep the best-scoring of each cluster.
+
+    The OECD monitor indexes articles, not events, so reading its whole window
+    returns the same escape or deletion ten or twenty times over, each under a
+    different headline. Nothing upstream deduplicates them — the URLs differ,
+    the dates differ by days, and the summaries are written separately. Titles
+    sharing half their content words are treated as one event; the highest
+    score survives and carries the count of what it stood in for.
+    """
+    kept = []
+    for item in sorted(items, key=lambda i: i["score"], reverse=True):
+        key = title_key(item["title"])
+        if not key:
+            kept.append(item)
+            continue
+        for other in kept:
+            shared = key & other["_key"]
+            union = key | other["_key"]
+            if union and len(shared) / len(union) >= threshold:
+                other["retellings"] = other.get("retellings", 1) + 1
+                break
+        else:
+            item["_key"] = key
+            kept.append(item)
+    for item in kept:
+        item.pop("_key", None)
+    return kept
 
 
 def main():
@@ -337,7 +559,8 @@ def main():
 
     items, failed = [], []
     for name, fn in (("AIID", lambda: fetch_aiid(cutoff, risks)),
-                     ("OECD", lambda: fetch_oecd(cutoff, str(today)))):
+                     ("OECD", lambda: fetch_oecd(cutoff, str(today))),
+                     ("AIAAIC", lambda: fetch_aiaaic(known))):
         try:
             got = fn()
             print(f"[feed] {name}: {len(got)} candidates")
@@ -360,6 +583,10 @@ def main():
     if risks:
         taxonomy = taxonomy_summary(risks, STATS.get("incidents", 0))
 
+    before = len(kept)
+    kept = collapse_retellings(kept)
+    print(f"[feed] collapsed {before} candidates to {len(kept)} events")
+
     kept.sort(key=lambda i: (i["date"], i["score"]), reverse=True)
     kept = kept[:MAX_ITEMS]
 
@@ -374,7 +601,8 @@ def main():
         "min_score": MIN_SCORE,
         "license": "Incident records and MIT classifications from the AI Incident "
                    "Database (incidentdatabase.ai), CC BY-SA. OECD entries from the "
-                   "OECD AI Incidents Monitor (oecd.ai/en/incidents).",
+                   "OECD AI Incidents Monitor (oecd.ai/en/incidents). AIAAIC "
+                   "entries from the AIAAIC Repository (aiaaic.org), CC BY-SA.",
         "taxonomy": taxonomy,
         "items": kept,
     }
