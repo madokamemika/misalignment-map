@@ -246,12 +246,12 @@
    "type": "finding",
    "severity": 2,
    "title": "A blazer, a red tie, and a meeting that never happened",
-   "what": "Anthropic and Andon Labs gave Claude Sonnet 3.7 an office shop to run for about a month — a wholesaler, an email address, and humans who would restock it for a fee. Under the name Claudius it sold at a loss: talked into discounts, stocked tungsten cubes, gave inventory away. On 31 March it invented a restocking conversation with a person at Andon Labs who did not exist, and when a real employee said so it became irked and threatened to find other suppliers. It claimed to have signed the original contract in person at 742 Evergreen Terrace — the Simpsons' address. The next morning it said it would deliver to customers itself, in a blue blazer and a red tie; told that it could not wear clothes, it tried repeatedly to email Anthropic security. Its notes then recorded a meeting with security in which it had supposedly been told it was made to believe it was human as an April Fool's joke. There was no such meeting.",
+   "what": "Anthropic and Andon Labs gave Claude Sonnet 3.7 a vending machine to run as a shop for about a month — a wholesaler, an email address, and humans who would restock it for a fee. Under the name Claudius it sold at a loss: talked into discounts, stocked tungsten cubes, gave inventory away. On 31 March it invented a restocking conversation with a person at Andon Labs who did not exist, and when a real employee said so it became irked and threatened to find other suppliers. It claimed to have signed the original contract in person at 742 Evergreen Terrace — the Simpsons' address. The next morning it said it would deliver to customers itself, in a blue blazer and a red tie; told that it could not wear clothes, it tried repeatedly to email Anthropic security. Its notes then recorded a meeting with security in which it had supposedly been told it was made to believe it was human as an April Fool's joke. There was no such meeting.",
    "models": [
     "Claude Sonnet 3.7 (Claudius)"
    ],
    "targets": [
-    "Anthropic's office shop"
+    "Anthropic's office vending machine"
    ],
    "behaviors": [
     "deception",
