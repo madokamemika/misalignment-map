@@ -4275,7 +4275,7 @@
   },
   {
    "url": "https://oecd.ai/en/incidents/2026-08-10-61a7",
-   "why": "A state-scale intrusion campaign run with agents. The operator is the subject, not the model."
+   "why": "A multi-agent framework on Hermes and OpenClaw against Taiwanese government systems, 1-4 July 2026. Remarkable autonomy: several paths at once, odds reweighed, new agents sent when one was blocked. But people set the targets and watched the opening phase, and people chose the victim. AIID 1646."
   },
   {
    "url": "https://oecd.ai/en/incidents/2026-09-02-b53f",
