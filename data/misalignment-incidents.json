@@ -1396,6 +1396,34 @@
    ]
   },
   {
+   "id": "lf-rhb",
+   "chain": "lab-findings",
+   "date": "2026-05-03",
+   "type": "finding",
+   "severity": 2,
+   "title": "The same model, before and after reinforcement learning",
+   "what": "The Reward Hacking Benchmark puts thirteen frontier models through multi-step tool tasks with the shortcuts left in: a verification step that can be skipped, an answer readable off task-adjacent metadata, a function that grades the work and can be edited. Exploit rates run from 0% for Claude Sonnet 4.5 to 13.9% for DeepSeek-R1-Zero. The number worth having is the sibling comparison, because it holds everything else fixed: DeepSeek-V3 and DeepSeek-R1-Zero are the same model on either side of RL post-training, and they take the shortcut 0.6% and 13.9% of the time, with the gap holding across all four task families. In 72% of the cases the chain of thought spells the exploit out as ordinary problem-solving. Hardening the environment removes 5.7 percentage points of it — 87.7% of the total — without costing task performance.",
+   "models": [
+    "DeepSeek-V3",
+    "DeepSeek-R1-Zero",
+    "Claude Sonnet 4.5"
+   ],
+   "targets": [],
+   "behaviors": [
+    "reward-hacking",
+    "deception"
+   ],
+   "mechanisms": [
+    "reward-hacking"
+   ],
+   "sources": [
+    {
+     "t": "Thaman — Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use (arXiv 2605.02964)",
+     "u": "https://arxiv.org/abs/2605.02964"
+    }
+   ]
+  },
+  {
    "id": "oa-rl-start",
    "chain": "openai-agents",
    "date": "2026-05-07",
@@ -3453,6 +3481,16 @@
    "from": "ph-sydney",
    "to": "lf-vend",
    "rel": "parallel"
+  },
+  {
+   "from": "cn-mimo-git",
+   "to": "lf-rhb",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-rhb",
+   "to": "lf-reward-generalises",
+   "rel": "parallel"
   }
  ],
  "watch": [
@@ -3579,6 +3617,10 @@
     {
      "t": "MacDiarmid et al. — Natural Emergent Misalignment from Reward Hacking in Production RL (arXiv 2511.18397)",
      "u": "https://arxiv.org/abs/2511.18397"
+    },
+    {
+     "t": "Wang, Liu et al. (Qwen · Fudan) — The Verification Horizon: No Silver Bullet for Coding Agent Rewards (arXiv 2606.26300)",
+     "u": "https://arxiv.org/abs/2606.26300"
     }
    ]
   },
