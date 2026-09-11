@@ -1,6 +1,7 @@
 {
  "generated": "2026-09-11",
  "curated_through": "2026-09-11",
+ "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
   "https://oecd.ai/en/incidents/2026-09-04-56a3",

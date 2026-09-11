@@ -129,9 +129,27 @@ rotted, say so.
 
 ## Licence and attribution
 
-Incident records and MIT taxonomy classifications drawn from the AI Incident
-Database are © their contributors under CC BY-SA; entries sourced from the
-OECD AI Incidents Monitor are credited on each episode. The writing here — the episode
-text, the links between episodes, the mechanism definitions — was done by
-Claude for this project and edited by [Veronica](https://goveronica.com), who
-owns it. Reuse it with attribution.
+**[MIT](LICENSE).** The work of this repository — the episode text, the links
+between episodes, the chains, the mechanism definitions, the collector and its
+workflow — is MIT, © Veronica. Take it, fork it, quote it, build on it.
+
+What we did not write keeps its own terms, and MIT here does not lift them:
+
+- **`data/misalignment-feed.json` is not MIT.** It reproduces incident titles
+  and summaries verbatim from the [AI Incident
+  Database](https://incidentdatabase.ai/) and the
+  [AIAAIC Repository](https://www.aiaaic.org/aiaaic-repository), both
+  CC BY-SA, and from the [OECD AI Incidents
+  Monitor](https://oecd.ai/en/incidents), whose summaries are machine-written
+  and labelled as such at the source. The file names them in its `license`
+  field; that is redistribution under their licences, not ours to relicense.
+- **The MIT AI Risk Repository classifications** carried in that file are
+  AIID's, CC BY-SA, and are what the
+  [MIT AI Incident Tracker](https://airisk.mit.edu/ai-incident-tracker) runs on.
+- **Quotations inside episodes** — a lab describing its own model, a
+  disclosure, a line from a paper — belong to whoever wrote them, and each is
+  attributed on the episode it appears in.
+
+An episode written from a source is ours; the facts in it are nobody's. Every
+source is cited on the episode that rests on it, and reusing this under MIT
+does not remove the obligation to keep those credits with it.

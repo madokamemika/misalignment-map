@@ -1,0 +1,41 @@
+MIT License
+
+Copyright (c) 2026 Veronica (https://goveronica.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This licence covers the work of this repository: the episode text, the links
+between episodes, the chains, the mechanism definitions, the collector script
+and the workflow.
+
+Two things in here are not ours to license, and keep their own terms:
+
+- `data/misalignment-feed.json` carries incident titles and summaries
+  reproduced verbatim from the AI Incident Database and the AIAAIC Repository,
+  both CC BY-SA, and from the OECD AI Incidents Monitor. That file is not
+  MIT — it is redistribution of those records under their own licences, and
+  the file names them in its `license` field.
+- Episodes quote labs and disclosures in quotation marks. Those sentences
+  belong to whoever wrote them; each is attributed on the episode.
+
+Facts are not copyrightable, and an episode written from a source is ours.
+Where a source has to be credited, it is credited — reusing this under MIT
+does not remove that.
