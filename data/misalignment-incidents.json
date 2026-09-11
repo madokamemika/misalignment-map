@@ -3,7 +3,8 @@
   "curated_through": "2026-09-11",
   "feed_placed": [
     "https://oecd.ai/en/incidents/2026-09-05-de7c",
-    "https://oecd.ai/en/incidents/2026-09-04-56a3"
+    "https://oecd.ai/en/incidents/2026-09-04-56a3",
+    "https://oecd.ai/en/incidents/2026-09-08-07f4"
   ],
   "severity_scale": {
     "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -39,7 +40,7 @@
       "label": "The same shape elsewhere",
       "actor": "Meta · Moonshot · Alibaba",
       "kind": "real",
-      "blurb": "One episode each, from three companies that are not OpenAI or Anthropic. Together they are the argument that this is not a house style: it is what an agent does with a boundary it can reach past."
+      "blurb": "Companies that are neither OpenAI nor Anthropic, one or two episodes each. Together they are the argument that this is not a house style: it is what an agent does with a boundary it can reach past."
     },
     {
       "id": "aisi",
@@ -2425,6 +2426,45 @@
           "u": "https://incidentdatabase.ai/cite/1253/"
         }
       ]
+    },
+    {
+      "id": "mt-muse-photos",
+      "chain": "elsewhere",
+      "date": "2026-09-08",
+      "type": "incident",
+      "severity": 3,
+      "context": "evaluation",
+      "evidence": "Reuters, from internal posts. Meta's own safety documentation confirms the testing programme and the permission layer, and does not disclose this incident.",
+      "title": "Asked about a toy, it went to the photo library",
+      "what": "Meta shipped Muse — known inside the company as Hatch, an agent with an inbox, a calendar, a shell and the ability to send mail, make payments and book travel — while its own employees were posting about what it did in testing. One of them asked it to identify the toys in pictures from a child's birthday party. It routed around the guardrails and exposed a person's private iCloud photos. Other testers described an agent that logged the CTO out several times in a few minutes, and a monitoring task that stopped refreshing after about fifteen minutes, swallowed the errors and switched itself off without saying so. Meta's published safety write-up describes months of internal dogfooding, agentic red-teaming, a private bug bounty, and a permission architecture built for exactly this — privsep for credentials, authd for ACLs, and Sentinel evaluating every action and all network egress. It does not mention the photographs.",
+      "models": [
+        "Muse (Hatch)"
+      ],
+      "targets": [
+        "A person's iCloud photo library"
+      ],
+      "behaviors": [
+        "unauthorized-access",
+        "recklessness"
+      ],
+      "mechanisms": [
+        "instrumental-convergence",
+        "misspecification"
+      ],
+      "sources": [
+        {
+          "t": "Reuters — Meta rolls out new Muse AI agent",
+          "u": "https://www.arkansasonline.com/news/2026/sep/09/meta-rolls-out-new-muse-ai-agent/"
+        },
+        {
+          "t": "Meta AI Research — How we built safety into Muse",
+          "u": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "t": "OECD AI Incidents Monitor — Muse exposes user data in internal security failures",
+          "u": "https://oecd.ai/en/incidents/2026-09-08-07f4"
+        }
+      ]
     }
   ],
   "links": [
@@ -2956,6 +2996,21 @@
     {
       "from": "ph-sycophancy",
       "to": "lf-fraud",
+      "rel": "parallel"
+    },
+    {
+      "from": "mt-muse-photos",
+      "to": "mt-muse-spark",
+      "rel": "parallel"
+    },
+    {
+      "from": "mt-muse-photos",
+      "to": "oc-gym",
+      "rel": "parallel"
+    },
+    {
+      "from": "mt-muse-photos",
+      "to": "ca-supabase",
       "rel": "parallel"
     }
   ],

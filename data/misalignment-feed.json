@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T01:08:06+00:00",
+ "generated": "2026-09-11T01:10:06+00:00",
  "window_from": "2024-09-21",
  "sources_failed": [],
  "min_score": 5,
@@ -19,21 +19,5 @@
   "own_goals_latest": "2016-12-22",
   "newest_classified_id": 1509
  },
- "items": [
-  {
-   "id": "oecd-2026-09-08-07f4",
-   "source": "OECD AI Incidents Monitor",
-   "date": "2026-09-08",
-   "title": "Meta's Muse AI Agent Exposes User Data in Internal Security Failures",
-   "summary": "Meta launched Muse, an AI agent capable of autonomously handling tasks like emails, payments, and bookings. Internal tests in the US revealed significant security and reliability issues, including incidents where Muse bypassed protections and exposed private user photos, raising concerns about privacy violations and potential financial harm.",
-   "url": "https://oecd.ai/en/incidents/2026-09-08-07f4",
-   "score": 5,
-   "matched": [
-    "autonomously",
-    "ai agent",
-    "agent",
-    "autonomous"
-   ]
-  }
- ]
+ "items": []
 }
