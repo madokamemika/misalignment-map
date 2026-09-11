@@ -154,8 +154,8 @@ VOCAB = ([(t, 2) for t in AGENTIC] + [(t, 2) for t in EVAL_CONTEXT]
 # Events already on the map, named by the event and never by the vendor. A
 # vendor-wide marker ("claude", "openai agents") looks tidy and quietly hides
 # every new incident that company has: three real ones were suppressed that
-# way, and were only found by reading the database by hand. Anything narrower
-# than an event phrase belongs in feed_placed instead.
+# way, and surfaced only when the database was read record by record. Anything
+# narrower than an event phrase belongs in feed_placed instead.
 CURATED_MARKERS = [
     "hugging face", "dsewiki", "dse wiki", "german wiki", "german programming wiki",
     "wiki incident", "rathbun", "matplotlib", "artifactory", "openai bots escape",

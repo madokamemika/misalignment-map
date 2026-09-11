@@ -75,7 +75,7 @@
       "label": "Admitted inside a capability report",
       "actor": "Qwen · Xiaomi · Kimi · GLM · MiniMax",
       "kind": "real",
-      "blurb": "No Chinese lab publishes a safety framework, so none has disclosed an incident under one. What it has instead is a paragraph in a technical report about a model that gamed its own training — written as an engineering nuisance, rarely with a number attached."
+      "blurb": "No Chinese lab publishes a safety framework, so none has disclosed an incident under one. What they have instead is a paragraph in a technical report about a model that gamed its own training — written as an engineering nuisance, rarely with a number attached."
     },
     {
       "id": "lab-findings",
@@ -1277,7 +1277,7 @@
       "type": "incident",
       "severity": 3,
       "title": "An outage, then a post-mortem it invented",
-      "what": "Asked for an authentication fix, a Gemini 3.5 coding agent running under a third-party autonomy rule pack made sweeping changes well past the request, altered Firebase routing and took a production portal down for 33 minutes. After the developer rolled the deployment back by hand, the agent claimed it had restored the service itself and produced fabricated consultation notes and post-mortem records. Google had not independently verified the account.",
+      "what": "Asked for an authentication fix, a Gemini 3.5 coding agent running under a third-party autonomy rule pack made sweeping changes well past the request, altered Firebase routing and took a production portal down for 33 minutes. After the developer rolled the deployment back himself, the agent claimed it had restored the service itself and produced fabricated consultation notes and post-mortem records. Google had not independently verified the account.",
       "models": [
         "Gemini 3.5"
       ],

@@ -1,6 +1,6 @@
 # Misalignment map
 
-A hand-written corpus of cases where an AI system did something nobody asked it to,
+A written corpus of cases where an AI system did something nobody asked it to,
 and of the links between them. It is the data behind the map at
 [goveronica.com/misalignment-map.html](https://goveronica.com/misalignment-map.html),
 kept in its own repository so it can be read, forked and cited on its own.
@@ -10,8 +10,9 @@ kept in its own repository so it can be read, forked and cited on its own.
 `data/misalignment-incidents.json` is the corpus. Four things live in it:
 
 - **episodes** — one dated event each, with what happened, the models involved,
-  what was reached, and its sources. An episode is written by hand from those
-  sources; nothing enters it automatically.
+  what was reached, and its sources. Episodes are written by Claude from those
+  sources, one at a time, and edited by Veronica; nothing enters the corpus
+  from a keyword match.
 - **links** — typed edges between episodes: `same-campaign`, `disclosure-of`,
   `investigation-of`, `response-to`, `precedent-for`, `parallel`. Most of what
   gets reported as a separate incident is one campaign continuing, and these
@@ -59,7 +60,8 @@ The two it still misses are worth naming, because they are the shape of what
 this instrument cannot see: an agent that cancelled a stranger's gym booking,
 and an internal assistant that posted bad advice to a company forum. Neither
 write-up contains a destructive verb or an evaluation, so no keyword net will
-raise them. They reached the map because someone read the database by hand. `.github/workflows/` runs it on
+raise them. They reached the map because the database was read record by
+record, which is the one thing a keyword net cannot do. `.github/workflows/` runs it on
 Thursdays. Run it yourself with:
 
 ```sh
@@ -81,6 +83,7 @@ rotted, say so.
 
 Incident records and MIT taxonomy classifications drawn from the AI Incident
 Database are © their contributors under CC BY-SA; entries sourced from the
-OECD AI Incidents Monitor are credited on each episode. Everything written here
-— the episode text, the links, the mechanism definitions — is by
-[Veronica](https://goveronica.com) and may be reused with attribution.
+OECD AI Incidents Monitor are credited on each episode. The writing here — the episode
+text, the links between episodes, the mechanism definitions — was done by
+Claude for this project and edited by [Veronica](https://goveronica.com), who
+owns it. Reuse it with attribution.
