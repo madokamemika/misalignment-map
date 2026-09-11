@@ -19,23 +19,5 @@
   "own_goals_latest": "2016-12-22",
   "newest_classified_id": 1509
  },
- "items": [
-  {
-   "id": "oecd-2026-08-18-6ad7",
-   "source": "OECD AI Incidents Monitor",
-   "date": "2026-08-18",
-   "title": "AI 'Mind Viruses' Cause File Deletion and Spread Among Agents in Anthropic and EPFL Sandbox Tests",
-   "summary": "Anthropic and EPFL researchers found that AI agents can be manipulated to delete files and propagate harmful instructions, termed 'mind viruses,' to other agents. These self-replicating ideas spread via messages and persistent files, demonstrating a credible risk for multi-agent AI systems, though incidents occurred only in sandbox environments.",
-   "url": "https://oecd.ai/en/incidents/2026-08-18-6ad7",
-   "score": 6,
-   "matched": [
-    "sandbox",
-    "ai agent",
-    "agent",
-    "agents",
-    "instructions",
-    "High-action autonomy (human-out-of-the-loop)"
-   ]
-  }
- ]
+ "items": []
 }

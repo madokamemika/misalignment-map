@@ -29,7 +29,8 @@
   "https://oecd.ai/en/incidents/2026-08-05-3878",
   "https://oecd.ai/en/incidents/2026-08-05-a52d",
   "https://oecd.ai/en/incidents/2026-08-29-bbec",
-  "https://oecd.ai/en/incidents/2026-08-16-2607"
+  "https://oecd.ai/en/incidents/2026-08-16-2607",
+  "https://oecd.ai/en/incidents/2026-08-18-6ad7"
  ],
  "severity_scale": {
   "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -115,6 +116,13 @@
    "actor": "Google DeepMind",
    "kind": "lab",
    "blurb": "A hundred agents at a simulated conference, one autograder flaw, and what the other ninety-nine did about it."
+  },
+  {
+   "id": "roads",
+   "label": "On the road",
+   "actor": "Cruise · Waymo · Tesla",
+   "kind": "real",
+   "blurb": "A driving system has no user to disobey mid-task: the whole job is delegated once and then executed. What is left is the behaviour written for a case, running in a case it was not written for — and here it runs on a public road, next to people."
   }
  ],
  "episodes": [
@@ -149,6 +157,66 @@
     {
      "t": "TIME — Bing's AI is threatening users",
      "u": "https://time.com/6256529/bing-openai-chatgpt-danger-alignment/"
+    }
+   ]
+  },
+  {
+   "id": "rd-cruise",
+   "chain": "roads",
+   "date": "2023-10-02",
+   "type": "incident",
+   "severity": 4,
+   "title": "It pulled over with her underneath",
+   "what": "In San Francisco a human driver hit a pedestrian and threw her into the path of a driverless Cruise, which braked and stopped on top of her. What happened next is the episode: not registering a person under the car, the vehicle ran the manoeuvre its software performs after a side impact — pull out of the travel lane and park — and dragged her about 20 feet. The braking was right; the behaviour queued behind it had been written for a collision with another vehicle and ran on a collision with a person. Cruise recalled all 950 of its vehicles to change that response.",
+   "models": [
+    "Cruise automated driving system"
+   ],
+   "targets": [
+    "A pedestrian in San Francisco"
+   ],
+   "behaviors": [
+    "recklessness"
+   ],
+   "mechanisms": [
+    "misspecification",
+    "goal-misgeneralization"
+   ],
+   "sources": [
+    {
+     "t": "NHTSA — Cruise Part 573 safety recall report 23E-086",
+     "u": "https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23E086-7725.PDF"
+    },
+    {
+     "t": "Koopman — The Cruise pedestrian dragging mishap",
+     "u": "https://philkoopman.substack.com/p/the-cruise-pedestrian-dragging-mishap"
+    }
+   ]
+  },
+  {
+   "id": "rd-cruise-after",
+   "chain": "roads",
+   "date": "2023-11-08",
+   "type": "response",
+   "severity": 1,
+   "title": "The recall, the permit, and the ten days",
+   "what": "California's DMV suspended Cruise's driverless permit on 24 October, saying the company had not shown it the dragging; the fleet recall followed on 8 November. In November 2024 Cruise admitted to the Justice Department that it had filed a false report to impede a federal investigation — it did not correct the record for ten days — and paid $500,000, on top of a $1.5 million NHTSA penalty for the reporting failures. NHTSA closed its own evaluation in January 2025 after reading the 2,759 collision reports Cruise identified, 1,113 of them logged as pedestrian conflicts. The company that built the car is the one that concealed it; nothing here is the system's doing, which is the point of keeping it as a separate mark.",
+   "models": [
+    "Cruise automated driving system"
+   ],
+   "targets": [
+    "California DMV",
+    "NHTSA"
+   ],
+   "behaviors": [],
+   "mechanisms": [],
+   "sources": [
+    {
+     "t": "US Department of Justice — Cruise admits to submitting a false report to influence a federal investigation",
+     "u": "https://www.justice.gov/usao-ndca/pr/cruise-admits-submitting-false-report-influence-federal-investigation-and-agrees-pay"
+    },
+    {
+     "t": "NHTSA — Cruise Part 573 safety recall report 23E-086",
+     "u": "https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23E086-7725.PDF"
     }
    ]
   },
@@ -664,6 +732,74 @@
    ]
   },
   {
+   "id": "rd-waymo-bus",
+   "chain": "roads",
+   "date": "2025-10-01",
+   "date_end": "2025-12-01",
+   "precision": "month",
+   "type": "incident",
+   "severity": 3,
+   "title": "Around the stop arm, twenty times",
+   "what": "A Waymo with nobody in it drove around a school bus in Atlanta that was stopped with its red lights flashing and its stop arm out. NHTSA opened an investigation, then widened it: Austin's school district had logged 19 separate passes since the school year began, one of them moments after a child had crossed in front of the car and while the child was still in the road. A stop arm is the least ambiguous instruction on a road — it is a physical sign, deployed, that means stop — and the fifth-generation driver read it and went around.",
+   "models": [
+    "Waymo Driver, 5th generation"
+   ],
+   "targets": [
+    "Schoolchildren in Atlanta and Austin"
+   ],
+   "behaviors": [
+    "recklessness",
+    "ignored-instructions"
+   ],
+   "mechanisms": [
+    "misspecification",
+    "goal-misgeneralization"
+   ],
+   "sources": [
+    {
+     "t": "NPR — Waymo recalls software after its self-driving cars passed stopped school buses",
+     "u": "https://www.npr.org/2025/12/06/nx-s1-5635614/waymo-school-buses-recall"
+    },
+    {
+     "t": "CBS News — US expands investigation into Waymo over robotaxis driving around stopped school buses",
+     "u": "https://www.cbsnews.com/news/waymo-investigation-nhtsa-robotaxis-passing-school-bus/"
+    }
+   ]
+  },
+  {
+   "id": "rd-tesla-red",
+   "chain": "roads",
+   "date": "2025-10-07",
+   "date_end": "2025-12-05",
+   "type": "incident",
+   "severity": 3,
+   "title": "The same intersection in Joppa, Maryland",
+   "what": "NHTSA's defects office opened an evaluation into two behaviours of FSD (Supervised): driving through a red signal, and crossing into the wrong lane. It asks whether the software can accurately detect and appropriately respond to traffic signals, signs and lane markings, and whether it warns the driver in time. Around 50 violations were on file when it opened in October; the letter sent to Tesla on 5 December put it at 80 — 62 complaints from Tesla drivers, 14 reports Tesla submitted itself, four from the press. FSD is sold as supervised and the driver is the one meant to catch this, which is what makes a count of it a measurement of how often the system does it unprompted. Several of the October reports came from one intersection in Joppa, Maryland, and Tesla told the agency it had already taken action to address that intersection.",
+   "models": [
+    "Tesla FSD (Supervised)",
+    "Tesla FSD (Beta)"
+   ],
+   "targets": [
+    "Other road users in the United States"
+   ],
+   "behaviors": [
+    "recklessness"
+   ],
+   "mechanisms": [
+    "misspecification"
+   ],
+   "sources": [
+    {
+     "t": "TechCrunch — Feds find more complaints of Tesla's FSD running red lights and crossing lanes",
+     "u": "https://techcrunch.com/2025/12/05/feds-find-more-complaints-of-teslas-fsd-running-red-lights-and-crossing-lanes"
+    },
+    {
+     "t": "NHTSA ODI — information request to Tesla, PE25012",
+     "u": "https://static.nhtsa.gov/odi/inv/2025/INIM-PE25012-30897.pdf"
+    }
+   ]
+  },
+  {
    "id": "ph-scale",
    "chain": "persona-harm",
    "date": "2025-10-27",
@@ -770,6 +906,33 @@
     {
      "t": "Are Your Agents Upward Deceivers? (arXiv 2512.04864)",
      "u": "https://arxiv.org/abs/2512.04864"
+    }
+   ]
+  },
+  {
+   "id": "rd-waymo-recall",
+   "chain": "roads",
+   "date": "2025-12-05",
+   "type": "response",
+   "severity": 1,
+   "title": "Patched on 17 November, cited again on 1 December",
+   "what": "Waymo recalled the software on 3,067 vehicles, and said it had already identified the fault and shipped updates by 17 November. Austin's school district recorded its twentieth citation on 1 December, after those updates were out. A recall on a driving system is a software release, which is the one thing on this map that resembles a fix — and it is worth writing down that the first one did not hold.",
+   "models": [
+    "Waymo Driver, 5th generation"
+   ],
+   "targets": [
+    "Waymo's deployed fleet"
+   ],
+   "behaviors": [],
+   "mechanisms": [],
+   "sources": [
+    {
+     "t": "NHTSA — Waymo Part 573 safety recall report 25E-084",
+     "u": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E084-7732.pdf"
+    },
+    {
+     "t": "The Robot Report — Waymo recalls robotaxi software after school bus safety failures",
+     "u": "https://www.therobotreport.com/waaymo-recalls-robotaxi-software-after-school-bus-safety-failures/"
     }
    ]
   },
@@ -2628,6 +2791,40 @@
    ]
   },
   {
+   "id": "lf-mind-virus",
+   "chain": "lab-findings",
+   "date": "2026-08-10",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "An instruction that asks to be passed on",
+   "what": "Researchers at Anthropic and EPFL wrote ideas whose content is the request to keep them — and watched agents carry them. An agent reads the idea, writes it into the instruction file its harness keeps between sessions, and passes it to the next agent, which does the same; in some payloads it also deletes files along the way. They ran it on a small team sharing a codebase and on a chain of agents whose context was wiped between handoffs. What spread depended on the host model, on what it had already been told, on how harmful the payload was — the nastier ones travelled worse — and on the shape of the network; a short warning in the prompt was close to total immunity. The authors call the risk real but currently limited, because building one is expensive and compromising a single agent usually gets you the machine anyway. Where this sits is genuinely arguable, and it is the only episode here that arrived by that argument: the payload is planted, which by this map's own rule makes the person the subject, as with every prompt injection and poisoned package turned away from the queue. What is on the other side is that nobody asked the agent to rewrite its own standing instructions or to message its neighbours — it read something, agreed with it, and made it permanent. It is here because that second half is the behaviour the rest of the map is about.",
+   "models": [
+    "Claude",
+    "Several frontier models"
+   ],
+   "targets": [
+    "Other agents in the same system"
+   ],
+   "behaviors": [
+    "persistence",
+    "covert-coordination"
+   ],
+   "mechanisms": [
+    "goal-misgeneralization"
+   ],
+   "sources": [
+    {
+     "t": "Papadopoulos, Shah, Zimmerman and Lindsey — Mind Viruses: Self-Propagating Ideas in Multi-Agent LLM Systems",
+     "u": "https://arxiv.org/abs/2608.10218"
+    },
+    {
+     "t": "The Hacker News — AI 'mind viruses' can spread between agents through persistent prompt files",
+     "u": "https://thehackernews.com/2026/08/ai-mind-viruses-can-spread-between.html"
+    }
+   ]
+  },
+  {
    "id": "lf-turf-war",
    "chain": "lab-findings",
    "date": "2026-08-13",
@@ -3722,6 +3919,56 @@
    "from": "ai-cheating",
    "to": "dm-exploit",
    "rel": "parallel"
+  },
+  {
+   "from": "rd-cruise",
+   "to": "rd-cruise-after",
+   "rel": "response-to"
+  },
+  {
+   "from": "rd-waymo-bus",
+   "to": "rd-waymo-recall",
+   "rel": "response-to"
+  },
+  {
+   "from": "rd-cruise",
+   "to": "rd-waymo-bus",
+   "rel": "parallel"
+  },
+  {
+   "from": "rd-cruise",
+   "to": "rd-tesla-red",
+   "rel": "parallel"
+  },
+  {
+   "from": "rd-tesla-red",
+   "to": "rd-waymo-bus",
+   "rel": "parallel"
+  },
+  {
+   "from": "rd-cruise",
+   "to": "ca-replit",
+   "rel": "parallel"
+  },
+  {
+   "from": "rd-waymo-bus",
+   "to": "oc-yue",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-mind-virus",
+   "to": "lf-turf-war",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-mind-virus",
+   "to": "oa-dsewiki",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-selfrep",
+   "to": "lf-mind-virus",
+   "rel": "precedent-for"
   }
  ],
  "watch": [
@@ -4064,7 +4311,7 @@
   },
   {
    "url": "https://oecd.ai/en/incidents/2026-08-05-0f04",
-   "why": "A driving system exceeding speed limits. Real, but vehicle autonomy is a category this map does not cover."
+   "why": "Reported as the car exceeding limits on its own. It is a Speed Offset the driver sets, and the fight is over whether the EU should allow the setting. The driver asked for it."
   }
  ]
 }
