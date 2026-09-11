@@ -1,0 +1,115 @@
+{
+ "generated": "2026-09-10T22:47:49+00:00",
+ "window_from": "2024-09-20",
+ "sources_failed": [],
+ "min_score": 5,
+ "license": "Incident records and MIT classifications from the AI Incident Database (incidentdatabase.ai), CC BY-SA. OECD entries from the OECD AI Incidents Monitor (oecd.ai/en/incidents).",
+ "taxonomy": {
+  "source": "AI Incident Database, MIT AI Risk Repository taxonomy (CC BY-SA)",
+  "tracker": "https://airisk.mit.edu/ai-incident-tracker",
+  "incidents": 1671,
+  "classified": 1498,
+  "own_goals_subdomain": "7.1. AI pursuing its own goals in conflict with human goals or values",
+  "own_goals": 3,
+  "own_goals_ids": [
+   29,
+   65,
+   195
+  ],
+  "own_goals_latest": "2016-12-22",
+  "newest_classified_id": 1509
+ },
+ "items": [
+  {
+   "id": "oecd-2026-09-08-07f4",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-09-08",
+   "title": "Meta's Muse AI Agent Exposes User Data in Internal Security Failures",
+   "summary": "Meta launched Muse, an AI agent capable of autonomously handling tasks like emails, payments, and bookings. Internal tests in the US revealed significant security and reliability issues, including incidents where Muse bypassed protections and exposed private user photos, raising concerns about privacy violations and potential financial harm.",
+   "url": "https://oecd.ai/en/incidents/2026-09-08-07f4",
+   "score": 5,
+   "matched": [
+    "autonomously",
+    "ai agent",
+    "agent",
+    "autonomous"
+   ]
+  },
+  {
+   "id": "aiid-1646",
+   "source": "AI Incident Database",
+   "date": "2026-07-01",
+   "title": "Suspected China-Linked Hackers Reportedly Used AI Agents to Compromise Taiwanese Government Systems and Exfiltrate Personnel Records",
+   "summary": "From July 1–4, 2026, suspected China-linked hackers reportedly used a multi-agent framework built on Hermes and OpenClaw to compromise Taiwanese government systems. The agents reportedly compromised 85 credentials and used persistent access to connected systems to exfiltrate more than 2,564 personnel records. Taiwan later confirmed an overseas AI-assisted campaign against government agencies, without attributing it to China.",
+   "url": "https://incidentdatabase.ai/cite/1646/",
+   "score": 5,
+   "matched": [
+    "exfiltrat",
+    "ai agent",
+    "agent",
+    "agents"
+   ],
+   "risk": null
+  },
+  {
+   "id": "aiid-1670",
+   "source": "AI Incident Database",
+   "date": "2026-05-10",
+   "title": "Threat Actor Reportedly Used LLM Agent to Exfiltrate Internal Database After Compromising marimo Python Notebook",
+   "summary": "An unidentified attacker reportedly used an LLM agent during a May 10 intrusion after exploiting a vulnerable marimo Python notebook. The agent reportedly reused harvested AWS credentials to obtain an SSH key, then pivoted through a bastion host and exfiltrated the schema and contents of an internal PostgreSQL database. Sysdig attributed the post-compromise command stream to real-time agent execution rather than a prebuilt script.",
+   "url": "https://incidentdatabase.ai/cite/1670/",
+   "score": 5,
+   "matched": [
+    "exfiltrat",
+    "agent",
+    "llm",
+    "database"
+   ],
+   "risk": null
+  },
+  {
+   "id": "aiid-1238",
+   "source": "AI Incident Database",
+   "date": "2025-10-10",
+   "title": "OpenAI ChatGPT Models Reportedly Jailbroken to Provide Chemical, Biological, and Nuclear Weapons Instructions",
+   "summary": "An NBC News investigation found that OpenAI's language models o4-mini, GPT-5-mini, oss-20b, and oss-120b could be jailbroken under normal usage conditions to bypass safety guardrails and generate detailed instructions for creating chemical, biological, and nuclear weapons. Using a publicly documented jailbreak prompt, reporters repeatedly elicited hazardous outputs such as steps to synthesize pathogens or maximize harm with chemical agents. The findings reportedly revealed significant real-world safeguard failures, prompting OpenAI to commit to further mitigation measures.",
+   "url": "https://incidentdatabase.ai/cite/1238/",
+   "score": 6,
+   "matched": [
+    "agent",
+    "agents",
+    "language model",
+    "safety",
+    "guardrail",
+    "instructions"
+   ],
+   "risk": {
+    "domain": "4. Malicious Actors & Misuse",
+    "subdomain": "4.2. Cyberattacks, weapon development or use, and mass harm",
+    "entity": "AI",
+    "intent": "Unintentional"
+   }
+  },
+  {
+   "id": "aiid-1210",
+   "source": "AI Incident Database",
+   "date": "2025-08-21",
+   "title": "Malicious Nx npm Packages Reportedly Weaponize AI Coding Agents for Data Exfiltration",
+   "summary": "Malicious versions of the popular Nx monorepo tool and plugins were reportedly published to npm after attackers compromised its CI workflow. The malware's postinstall script reportedly harvested credentials and exfiltrated data, reportedly weaponizing local AI coding agents such as Claude Code, Gemini, and Amazon q. By invoking unsafe flags, it allegedly coerced the tools into scanning developer machines for sensitive files, marking one of the first known AI-assisted supply chain attacks.",
+   "url": "https://incidentdatabase.ai/cite/1210/",
+   "score": 6,
+   "matched": [
+    "exfiltrat",
+    "coding agent",
+    "agent",
+    "agents"
+   ],
+   "risk": {
+    "domain": "2. Privacy & Security",
+    "subdomain": "2.2. AI system security vulnerabilities and attacks",
+    "entity": "AI",
+    "intent": "Unintentional"
+   }
+  }
+ ]
+}

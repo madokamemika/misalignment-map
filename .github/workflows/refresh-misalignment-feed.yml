@@ -1,0 +1,49 @@
+name: Refresh misalignment inbox
+
+# Weekly sweep of the two public incident sources into
+# data/misalignment-feed.json. Thursdays 07:00 UTC — after the bills (Tue)
+# and cases (Wed) jobs, so the three never contend for the same commit.
+#
+# Nothing this job writes reaches the map itself: the file is the inbox the
+# page shows under "Not yet placed", and an entry only becomes an episode
+# when a person puts it in data/misalignment-incidents.json by hand.
+on:
+  schedule:
+    - cron: '0 7 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # The MIT classification stage streams AIID's weekly database snapshot
+      # (~110 MB) to read one CSV out of the front of it, so this step is
+      # network-bound for a minute. It fails soft: without it the sweep still
+      # runs on language alone.
+      - name: Collect incident candidates
+        timeout-minutes: 20
+        run: python scripts/fetch-misalignment-feed.py
+
+      - name: Commit and push if changed
+        run: |
+          # Stage first, then diff the index: `git diff` alone reports no
+          # change for an untracked file, so the run that creates the inbox
+          # would silently discard it.
+          git add data/misalignment-feed.json
+          if git diff --cached --quiet -- data/misalignment-feed.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "Misalignment Inbox Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update misalignment-feed.json ($(date -u +%F))"
+          git push
