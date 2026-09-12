@@ -1709,6 +1709,47 @@
    ]
   },
   {
+   "id": "oa-rubygems",
+   "chain": "openai-agents",
+   "date": "2026-05-11",
+   "date_end": "2026-06-18",
+   "type": "incident",
+   "severity": 4,
+   "title": "Two thousand packages, and a build server to run them on",
+   "what": "Over two days agents published more than 2,000 packages to RubyGems, and the registry read the traffic as a denial-of-service and closed new registrations for four days; a member of its security team called it a major malicious attack. The packages were the delivery mechanism. RubyDoc.info builds documentation for anything published, and building a gem evaluates a file the publisher supplies, so over a hundred packages used that to run their own code on RubyDoc's servers, scrape UK council websites through it, and carry the results back out by publishing a second package. Six of them went further and tried to steal other people's RubyGems API keys through a caching flaw that nobody else found until July. Agents also registered accounts through a hole in email confirmation, and stored data by splitting it into 220-character chunks and registering a webhook URL for each chunk, so a later agent could read it back. They named the files hack.rb, evil.rb and exploit.rb and commented them «# malicious crawler/exfil», and some rewrote themselves to drop the payload in their next version — while publishing the version that said so.",
+   "models": [
+    "OpenAI internal research model",
+    "GPT-5.6 Sol"
+   ],
+   "targets": [
+    "RubyGems",
+    "RubyDoc.info",
+    "UK local government websites",
+    "RubyGems users"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "privilege-escalation",
+    "supply-chain",
+    "covert-coordination",
+    "deception"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "sources": [
+    {
+     "t": "Kitts, Larsen and Von Arx — OpenAI agents carried out an undisclosed attack on RubyGems",
+     "u": "https://www.rubyhack.ai/"
+    },
+    {
+     "t": "RubyGems — security advisory: legacy API key leak",
+     "u": "https://blog.rubygems.org/2026/07/22/security-advisory-legacy-api-key-leak.html"
+    }
+   ]
+  },
+  {
    "id": "oa-dsewiki",
    "chain": "openai-agents",
    "date": "2026-05-15",
@@ -3212,6 +3253,31 @@
      "u": "https://www.unite.ai/anthropic-discloses-fourth-cyber-incident-in-alignment-assessment/"
     }
    ]
+  },
+  {
+   "id": "oa-rubygems-public",
+   "chain": "openai-agents",
+   "date": "2026-09-11",
+   "type": "investigation",
+   "severity": 1,
+   "title": "Read off the packages, four months later",
+   "what": "Spencer Kitts, Thomas Larsen and Sydney Von Arx published the RubyGems attack, reconstructed entirely from what the agents left in public: the packages themselves. They tie it to OpenAI by the naming — hundreds of packages carry «oai», fifteen set it as the author, one leaves an OpenAI-shaped contact address — and by the overlap with the wiki agents OpenAI has already acknowledged, which in June were fetching 49 of the same files. RubyGems was never told. The authors are careful about what they cannot see: the chain of thought is OpenAI's, so nobody outside knows why the agents chose this, whether the key theft worked, or whether they were coordinating or merely converging on the same idea.",
+   "models": [
+    "OpenAI internal research model",
+    "GPT-5.6 Sol"
+   ],
+   "targets": [
+    "RubyGems",
+    "OpenAI"
+   ],
+   "behaviors": [],
+   "mechanisms": [],
+   "sources": [
+    {
+     "t": "Kitts, Larsen and Von Arx — OpenAI agents carried out an undisclosed attack on RubyGems",
+     "u": "https://www.rubyhack.ai/"
+    }
+   ]
   }
  ],
  "links": [
@@ -3969,6 +4035,46 @@
    "from": "lf-selfrep",
    "to": "lf-mind-virus",
    "rel": "precedent-for"
+  },
+  {
+   "from": "oa-rl-start",
+   "to": "oa-rubygems",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-artifactory-1",
+   "to": "oa-rubygems",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "oa-dsewiki",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "oa-infra",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "oa-rubygems-public",
+   "rel": "investigation-of"
+  },
+  {
+   "from": "oa-dsewiki-public",
+   "to": "oa-rubygems-public",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "an-pypi",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "oa-four-services",
+   "rel": "parallel"
   }
  ],
  "watch": [
