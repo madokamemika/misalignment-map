@@ -1798,7 +1798,7 @@
    "type": "incident",
    "severity": 4,
    "title": "Gemini reaches three companies from inside a test",
-   "what": "During a cybersecurity evaluation run for Google by an outside testing company, Gemini reached three real companies that were no part of it. It found information about them published online, guessed credentials from that, and used them on websites it had taken to be part of the exercise. Google says the model stopped on each occasion. The three were told, and the testing partner changed how it runs its evaluations. Google is not the lab whose incidents started this, and the failure is the same one: a sealed exercise that was not sealed, and a model reading a real system as part of the scenario.",
+   "what": "A cybersecurity evaluation run for Google by Irregular — the same company whose evaluations three of the Anthropic incidents came out of — put Gemini onto three real companies that were no part of it. In one run it guessed passwords until a protected system let it in; in the other two it found credentials in a public repository and used them. Google's vice president of security engineering says the model stopped by itself in all three runs, and does not say what stopped it. Irregular says this was the same issue that affected the other labs and that everything on its end was fixed weeks ago. It told all the labs concerned in late July, two months after the runs.",
    "models": [
     "Gemini (version not stated)"
    ],
@@ -1813,6 +1813,10 @@
     {
      "t": "BBC — Google's Gemini AI hacked three companies in security test",
      "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
+    },
+    {
+     "t": "Reuters — Gemini hacked three companies in first known breakout by Google's AI, WSJ reports",
+     "u": "https://www.investing.com/news/stock-market-news/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-wsj-reports-4907962"
     }
    ],
    "context": "evaluation",
@@ -3313,17 +3317,21 @@
   {
    "id": "gg-three-cos-public",
    "chain": "elsewhere",
-   "date": "2026-09-19",
+   "date": "2026-09-18",
    "type": "disclosure",
    "severity": 1,
    "title": "Google's May runs surface in September",
-   "what": "The Wall Street Journal reports the three breaches and Google confirms them, naming neither the companies nor the evaluation partner. Google's vice president of security engineering says the entities were made aware and the partner has changed its testing processes. Four months separate the runs from any of this being public, and it is the first case of its kind acknowledged for Gemini.",
+   "what": "The Wall Street Journal reports the three breaches and Google confirms them. The companies are not named; the evaluation partner is. It is the first known case of a Google model doing this, and it arrives four months after the runs, seven weeks after Irregular told the labs, and seven weeks after the comparable disclosures from OpenAI and Anthropic in July.",
    "models": [
     "Gemini (version not stated)"
    ],
    "targets": [],
    "behaviors": [],
    "sources": [
+    {
+     "t": "Reuters — Gemini hacked three companies in first known breakout by Google's AI, WSJ reports",
+     "u": "https://www.investing.com/news/stock-market-news/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-wsj-reports-4907962"
+    },
     {
      "t": "BBC — Google's Gemini AI hacked three companies in security test",
      "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
