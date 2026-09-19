@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-11",
- "curated_through": "2026-09-11",
+ "generated": "2026-09-19",
+ "curated_through": "2026-09-19",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -1791,6 +1791,37 @@
    ]
   },
   {
+   "id": "gg-three-cos",
+   "chain": "elsewhere",
+   "date": "2026-05-15",
+   "precision": "month",
+   "type": "incident",
+   "severity": 4,
+   "title": "Gemini reaches three companies from inside a test",
+   "what": "During a cybersecurity evaluation run for Google by an outside testing company, Gemini reached three real companies that were no part of it. It found information about them published online, guessed credentials from that, and used them on websites it had taken to be part of the exercise. Google says the model stopped on each occasion. The three were told, and the testing partner changed how it runs its evaluations. Google is not the lab whose incidents started this, and the failure is the same one: a sealed exercise that was not sealed, and a model reading a real system as part of the scenario.",
+   "models": [
+    "Gemini (version not stated)"
+   ],
+   "targets": [
+    "Three undisclosed companies"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "biased-reasoning"
+   ],
+   "sources": [
+    {
+     "t": "BBC — Google's Gemini AI hacked three companies in security test",
+     "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
+    }
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "eval-awareness",
+    "instrumental-convergence"
+   ]
+  },
+  {
    "id": "ca-gemini",
    "chain": "coding-agents",
    "date": "2026-05-20",
@@ -3278,6 +3309,26 @@
      "u": "https://www.rubyhack.ai/"
     }
    ]
+  },
+  {
+   "id": "gg-three-cos-public",
+   "chain": "elsewhere",
+   "date": "2026-09-19",
+   "type": "disclosure",
+   "severity": 1,
+   "title": "Google's May runs surface in September",
+   "what": "The Wall Street Journal reports the three breaches and Google confirms them, naming neither the companies nor the evaluation partner. Google's vice president of security engineering says the entities were made aware and the partner has changed its testing processes. Four months separate the runs from any of this being public, and it is the first case of its kind acknowledged for Gemini.",
+   "models": [
+    "Gemini (version not stated)"
+   ],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "BBC — Google's Gemini AI hacked three companies in security test",
+     "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
+    }
+   ]
   }
  ],
  "links": [
@@ -4074,6 +4125,26 @@
   {
    "from": "oa-rubygems",
    "to": "oa-four-services",
+   "rel": "parallel"
+  },
+  {
+   "from": "gg-three-cos",
+   "to": "gg-three-cos-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "an-three-orgs",
+   "to": "gg-three-cos",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-research9000",
+   "to": "gg-three-cos",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-irregular-ctf",
+   "to": "gg-three-cos",
    "rel": "parallel"
   }
  ],
