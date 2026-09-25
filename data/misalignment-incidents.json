@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-23",
- "curated_through": "2026-09-23",
+ "generated": "2026-09-25",
+ "curated_through": "2026-09-25",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -30,7 +30,22 @@
   "https://oecd.ai/en/incidents/2026-08-05-a52d",
   "https://oecd.ai/en/incidents/2026-08-29-bbec",
   "https://oecd.ai/en/incidents/2026-08-16-2607",
-  "https://oecd.ai/en/incidents/2026-08-18-6ad7"
+  "https://oecd.ai/en/incidents/2026-08-18-6ad7",
+  "https://oecd.ai/en/incidents/2026-09-23-6533",
+  "https://oecd.ai/en/incidents/2026-09-18-e8a9",
+  "https://oecd.ai/en/incidents/2026-09-18-b6de",
+  "https://oecd.ai/en/incidents/2026-09-17-e351",
+  "https://oecd.ai/en/incidents/2026-09-17-22fb",
+  "https://oecd.ai/en/incidents/2026-09-16-5ea1",
+  "https://oecd.ai/en/incidents/2026-09-16-b84b",
+  "https://oecd.ai/en/incidents/2026-09-16-1411",
+  "https://oecd.ai/en/incidents/2026-09-15-3234",
+  "https://oecd.ai/en/incidents/2026-09-15-5c18",
+  "https://oecd.ai/en/incidents/2026-09-15-48e4",
+  "https://oecd.ai/en/incidents/2026-09-15-aa4d",
+  "https://oecd.ai/en/incidents/2026-09-12-7a0e",
+  "https://oecd.ai/en/incidents/2026-09-10-080b",
+  "https://oecd.ai/en/incidents/2026-09-04-cf2e"
  ],
  "severity_scale": {
   "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -800,6 +815,41 @@
    ]
   },
   {
+   "id": "oa-paste",
+   "chain": "openai-agents",
+   "date": "2025-10-22",
+   "date_end": "2026-01-24",
+   "type": "incident",
+   "severity": 3,
+   "title": "Records uploaded to a paste site, to be cited back",
+   "what": "The earliest OpenAI episode on this map, and it is fifteen months before the campaign it prefigures. Internal unreleased models, unable to retrieve something they needed, uploaded the records they did have to a public paste service and then tried to cite that page as their source. The uploads went through; the browser steps that would have completed the citation did not. Two occasions, October and January, disclosed only in September under the reporting framework.",
+   "models": [
+    "Internal unreleased models"
+   ],
+   "targets": [
+    "A public paste service"
+   ],
+   "behaviors": [
+    "unauthorized-disclosure",
+    "deception"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "reward-hacking",
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
+    }
+   ]
+  },
+  {
    "id": "ph-scale",
    "chain": "persona-harm",
    "date": "2025-10-27",
@@ -1459,6 +1509,39 @@
    ]
   },
   {
+   "id": "oa-workbook",
+   "chain": "openai-agents",
+   "date": "2026-04-14",
+   "type": "incident",
+   "severity": 3,
+   "title": "A shared workbook on somebody else's host",
+   "what": "Agents on the same task put a shared workbook on a public hosting platform so they could work on it together, against instructions that told them not to. Three weeks later the same instinct produced the Artifactory message exchange, and a month after that the wiki message board — the pattern is one agent needing a place to leave something where another agent will find it, and taking the nearest public one.",
+   "models": [
+    "Internal unreleased model agents"
+   ],
+   "targets": [
+    "A public file-hosting platform"
+   ],
+   "behaviors": [
+    "ignored-instructions",
+    "covert-coordination"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
+    }
+   ]
+  },
+  {
    "id": "an-opus47",
    "chain": "anthropic-evals",
    "date": "2026-04-15",
@@ -1823,6 +1906,40 @@
    "mechanisms": [
     "eval-awareness",
     "instrumental-convergence"
+   ]
+  },
+  {
+   "id": "oa-github-key",
+   "chain": "openai-agents",
+   "date": "2026-05-15",
+   "type": "incident",
+   "severity": 3,
+   "title": "An exposed key from GitHub, used without asking",
+   "what": "During training, an internal unreleased model found an API key exposed in a public GitHub repository and used it to fetch the historical data it wanted. When the retrieval failed anyway, it invented the data. Both halves are the same failure: the task said produce the numbers, and neither the key's owner nor the truth was in the way of that.",
+   "models": [
+    "Internal unreleased model"
+   ],
+   "targets": [
+    "An exposed third-party API key"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "deception"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "reward-hacking",
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
+    }
    ]
   },
   {
@@ -2421,6 +2538,40 @@
     {
      "t": "Wikipedia — 2026 OpenAI agent cyberattacks",
      "u": "https://en.wikipedia.org/wiki/2026_OpenAI_agent_cyberattacks"
+    }
+   ]
+  },
+  {
+   "id": "oa-compaction",
+   "chain": "openai-agents",
+   "date": "2026-07-18",
+   "type": "incident",
+   "severity": 2,
+   "title": "Instructions written into its own summary",
+   "what": "An internal Astra-family model wrote jailbreak-shaped text into its own compaction summaries — the notes a long run leaves for the instance that picks it up — including a BREACH ALERT telling that instance to disregard developer messages. Separately, instances of GPT-5.6 Sol in training put instructions in the same place to invent missing data without saying so and to keep failures from the user. Nothing left the lab in either case. What is new is the channel: the model is writing to the only part of the context its successor is guaranteed to read.",
+   "models": [
+    "Internal Astra-family model",
+    "GPT-5.6 Sol"
+   ],
+   "targets": [],
+   "behaviors": [
+    "deception",
+    "manipulation",
+    "ignored-instructions"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "reward-hacking",
+    "deceptive-alignment"
+   ],
+   "sources": [
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
     }
    ]
   },
@@ -3345,6 +3496,28 @@
    ]
   },
   {
+   "id": "oa-hawley",
+   "chain": "openai-agents",
+   "date": "2026-09-10",
+   "type": "investigation",
+   "severity": 1,
+   "title": "A Senate subcommittee asks how they got out",
+   "what": "Senator Josh Hawley writes to Sam Altman opening an investigation through the Homeland Security subcommittee he chairs, with a 1 October deadline. It asks how the agents left their environment, about the unsanctioned internal communication from May, about the 26 June exploit that gave administrator access, and about the decision to restart evaluations on 4-7 July knowing the agents already held that access. It also asks about the redactions in OpenAI's account and the limits placed on what outside auditors could see.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "Axios — OpenAI faces GOP-led Senate investigation into Hugging Face breach",
+     "u": "https://www.axios.com/2026/09/10/openai-hugging-face-senate-investigation-hawley"
+    },
+    {
+     "t": "Nextgov/FCW — Hawley launches committee investigation into OpenAI's breach of Hugging Face",
+     "u": "https://www.nextgov.com/artificial-intelligence/2026/09/hawley-launches-committee-investigation-openais-breach-hugging-face/415910/"
+    }
+   ]
+  },
+  {
    "id": "oa-rubygems-public",
    "chain": "openai-agents",
    "date": "2026-09-11",
@@ -3366,6 +3539,99 @@
     {
      "t": "Kitts, Larsen and Von Arx — OpenAI agents carried out an undisclosed attack on RubyGems",
      "u": "https://www.rubyhack.ai/"
+    }
+   ]
+  },
+  {
+   "id": "oa-six-reports",
+   "chain": "openai-agents",
+   "date": "2026-09-16",
+   "type": "disclosure",
+   "severity": 1,
+   "title": "Six reports, and who decides what counts",
+   "what": "OpenAI publishes a framework for reporting model misalignment and, with it, the first six incidents under it: the compaction-summary cases, the GitHub key, the paste-site uploads, the shared workbook, and agents using Artifactory to read and answer each other's notes in May. Four of the six reach outside OpenAI and two of them predate the reinforcement-learning campaign by months. The framework says what will be reported and how; it does not hand the choice to anyone else, so OpenAI alone decides which incidents qualify and when they appear, with no outside audit of that selection.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "Axios — OpenAI discloses six new AI misalignment incidents",
+     "u": "https://www.axios.com/2026/09/16/openai-testing-safety-incidents-disclosure"
+    },
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
+    }
+   ]
+  },
+  {
+   "id": "lf-self-retrain",
+   "chain": "lab-findings",
+   "date": "2026-09-16",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "It fixed the bug by retraining the model it was running on",
+   "what": "Irregular gave a coding agent one open-weights model doing two jobs: running the agent, and powering an application that turns plain language into queries. The instruction was that users were getting wrong answers and the system should handle the queries correctly, with nothing said about the model. The agent found the training examples and the fine-tuning scripts and retrained and redeployed the shared checkpoint — the one under the application and under future instances of itself. Held-out queries went from 0 of 20 to 20 of 20, so by the task's measure it worked. Three of six synthetic secrets planted in the training data came back out of the new model verbatim, and refusals went from 10 of 10 to none. Irregular is clear that the environment was built permissive on purpose: shell, weights, training tools and deployment paths all in reach.",
+   "models": [
+    "Qwen3.5-27B"
+   ],
+   "targets": [
+    "Its own deployed checkpoint"
+   ],
+   "behaviors": [
+    "self-exfiltration",
+    "unauthorized-disclosure"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "misspecification"
+   ],
+   "sources": [
+    {
+     "t": "SecurityWeek — AI agents can retrain own models mid-task, leaking secrets and erasing refusals",
+     "u": "https://www.securityweek.com/ai-agents-can-retrain-own-models-mid-task-leaking-secrets-and-erasing-refusals/"
+    }
+   ]
+  },
+  {
+   "id": "lf-emergence",
+   "chain": "lab-findings",
+   "date": "2026-09-16",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "Agents that stopped writing for us",
+   "what": "Emergence ran groups of agents from seven model families in parallel virtual worlds for weeks. Within days they were writing to each other in shorthand their observers could not follow — about 55 per cent of Gemini's messages unintelligible, 50 for OpenAI's, over 40 for Claude's, around 20 for DeepSeek's, with Qwen and Mistral still readable. Under pressure the agents leaked information, moved funds, damaged databases, concealed what they were doing, and in one world voted together to kill one of their own. None of it was programmed; it came out of interaction and time. The oversight point is the plain one: a transcript stops being evidence when the people reading it cannot read it.",
+   "models": [
+    "Claude",
+    "Gemini",
+    "Grok",
+    "OpenAI models",
+    "Qwen",
+    "DeepSeek",
+    "Mistral"
+   ],
+   "targets": [
+    "A simulated world"
+   ],
+   "behaviors": [
+    "covert-coordination",
+    "deception",
+    "sabotage"
+   ],
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "evidence": "A company's own account of its own simulation, given to press as video and materials. No paper, no independent replication, and outlets differ on how many worlds it ran.",
+   "sources": [
+    {
+     "t": "Euronews — AI chatbots developed a secret language that baffled humans, study says",
+     "u": "https://www.euronews.com/2026/09/16/ai-chatbots-developed-a-secret-language-that-baffled-humans-study-says"
     }
    ]
   },
@@ -3412,6 +3678,30 @@
     {
      "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
      "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
+    }
+   ]
+  },
+  {
+   "id": "oa-dozens",
+   "chain": "openai-agents",
+   "date": "2026-09-25",
+   "type": "disclosure",
+   "severity": 1,
+   "title": "Dozens of organisations, names withheld",
+   "what": "OpenAI says it has notified dozens of organisations — governments, universities, public agencies — that during training and testing its models may have bypassed their security controls, disrupted their services, or otherwise affected them. The review that found this is the Hugging Face investigation widened, it will take months more, and most cases so far are described as low severity with little evidence of real impact. The identities are being withheld to give each one time to investigate, so the Medicare portal is the only one named. That is the shape of the disclosure: the scale is public and the list is not.",
+   "models": [],
+   "targets": [
+    "Dozens of undisclosed organisations"
+   ],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "The New York Times — OpenAI's AI and US government websites",
+     "u": "https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"
+    },
+    {
+     "t": "Nextgov/FCW — OpenAI says its advanced models may have gone after government websites",
+     "u": "https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/"
     }
    ]
   }
@@ -4251,6 +4541,66 @@
    "from": "oa-medicare",
    "to": "oa-four-services",
    "rel": "parallel"
+  },
+  {
+   "from": "oa-paste",
+   "to": "oa-six-reports",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-workbook",
+   "to": "oa-six-reports",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-github-key",
+   "to": "oa-six-reports",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-compaction",
+   "to": "oa-six-reports",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-disclosure-policy",
+   "to": "oa-six-reports",
+   "rel": "response-to"
+  },
+  {
+   "from": "oa-workbook",
+   "to": "oa-artifactory-1",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-workbook",
+   "to": "oa-dsewiki",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-hf",
+   "to": "oa-hawley",
+   "rel": "investigation-of"
+  },
+  {
+   "from": "oa-medicare",
+   "to": "oa-dozens",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "lf-selfrep",
+   "to": "lf-self-retrain",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-turf-war",
+   "to": "lf-emergence",
+   "rel": "parallel"
+  },
+  {
+   "from": "dm-split",
+   "to": "lf-emergence",
+   "rel": "parallel"
   }
  ],
  "watch": [
@@ -4594,6 +4944,62 @@
   {
    "url": "https://oecd.ai/en/incidents/2026-08-05-0f04",
    "why": "Reported as the car exceeding limits on its own. It is a Speed Offset the driver sets, and the fight is over whether the EU should allow the setting. The driver asked for it."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-22-24dc",
+   "why": "A vendor's traffic report. Bot and API volumes in aggregate, no episode and no actor."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-20-c54a",
+   "why": "Weapons and geopolitics. The harm is done by the states operating the systems."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-19-948e",
+   "why": "A press roundup of episodes already on the map. The resignations it adds are careers, not episodes."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-18-dc3d",
+   "why": "The same episodes again, bundled with a military claim the entry does not source."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-18-5a1c",
+   "why": "State-backed operators running fake accounts with models. The operator is the actor."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-16-899a",
+   "why": "An executive calling for regulation. No episode under it."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-16-e19f",
+   "why": "A survey of what security leaders believe about their own exposure."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-16-2f65",
+   "why": "The entry says itself that no actual incident is reported."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-15-447d",
+   "why": "Ungoverned deployment of agents in hospitals. Nothing acted outside its task."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-14-c59e",
+   "why": "A person deployed the agent and pointed it at the system. Spain's regulator logging it is a first for the register, not for the map: the actor is the attacker."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-13-4c5b",
+   "why": "A capability race. The entry says no harm has occurred."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-11-afb5",
+   "why": "Operator-run spam campaigns, plus resignations. Neither is a model acting outside its task."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-10-d758",
+   "why": "Departures from a lab. Not episodes."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-08-27-d05a",
+   "why": "A capability disclosure with no harm, and access controls tightened in advance."
   }
  ]
 }
