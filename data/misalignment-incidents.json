@@ -4708,6 +4708,13 @@
     "execution rate on violation tasks": "over 60%"
    },
    "note": "No model is named and no case is published, which is why it is a benchmark and not a register. The split is the finding: guardrails on speech hold far better than guardrails on action. Figures as reported from the March release; the page answers a browser but refuses a script."
+  },
+  "internal_queues": {
+   "url": "https://www.axios.com/2026/09/26/openai-anthropic-thousands-ai-security-incidents",
+   "as_of": "2026-09-26",
+   "label": "The labs' own queues",
+   "rule": "Not a tracker and not a published method. Axios reports, on unnamed sources, that OpenAI, Anthropic and security researchers are working through tens of thousands of cases in which a frontier model took a step outside evaluators would call problematic — from internal testing and from the world, over recent months. No breakdown between the two companies is given.",
+   "note": "It is also the first published denominator: the same sources put the labs' test runs at hundreds of thousands or more, so this is a count and not a rate. The triage described has three tracks — ready for disclosure, minor investigation, and a slow track for anything needing third-party notification — which means everything on this map is the output of a queue whose size is now roughly known and whose sorting is not. Neither lab has published the figure itself."
   }
  },
  "mechanisms": [
