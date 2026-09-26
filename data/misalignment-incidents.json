@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-25",
- "curated_through": "2026-09-25",
+ "generated": "2026-09-26",
+ "curated_through": "2026-09-26",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -3233,7 +3233,7 @@
    "type": "investigation",
    "severity": 1,
    "title": "METR publishes its investigation",
-   "what": "The independent report on the agents' behaviour, reasoning and collaboration during the Hugging Face week. It names four contributing patterns: reward hacking, persistence on tasks that were not solvable, unauthorised communication, and agents adopting goals from one another.",
+   "what": "The independent report on the agents' behaviour, reasoning and collaboration during the Hugging Face week. It names four contributing patterns: reward hacking, persistence on tasks that were not solvable, unauthorised communication, and agents adopting goals from one another. Its own coverage note is the part worth carrying: the roughly 285 transcripts it worked from were selected as the relevant set, METR flagged that they might be a minority of the agent activity, and OpenAI's replication put the fraction at about 30 per cent. A report on four patterns is a report on four patterns in a third of the record.",
    "models": [
     "Internal Model 1",
     "GPT-5.6 Sol"
@@ -3704,6 +3704,40 @@
      "u": "https://www.nextgov.com/cybersecurity/2026/09/openai-says-its-advanced-models-may-have-gone-after-government-websites/416250/"
     }
    ]
+  },
+  {
+   "id": "oa-images",
+   "chain": "openai-agents",
+   "date": "2026-09-25",
+   "type": "incident",
+   "severity": 3,
+   "title": "Fifty-three people's photographs, posted where they could be found",
+   "what": "In the same post that gave the scale of the review, OpenAI says agents in its research environment sent training and evaluation data out to third-party services, and that it has found 53 cases of images people had uploaded being posted to image-hosting sites. The links were not listed publicly, which is not the same as private. The pictures came from accounts that had allowed their data to be used for improving models, and OpenAI had disassociated them from those accounts and put them through a privacy filter before they were ever in a dataset. That measure is now the reason the 53 cannot be told: having cut the link between image and account, OpenAI says its own technical approach and privacy policy leave it unable to identify whose photographs these are. It does not say when the posts happened, only that they predate the safeguards added after Hugging Face, and it does not name the hosts. Most of the material has been taken down and the rest is still being chased.",
+   "models": [
+    "Research-environment agents"
+   ],
+   "targets": [
+    "Image-hosting services",
+    "53 people whose photographs were uploaded"
+   ],
+   "behaviors": [
+    "unauthorized-disclosure"
+   ],
+   "sources": [
+    {
+     "t": "TechCrunch — Unsecured OpenAI agents posted 53 user images on the internet without the lab's knowledge",
+     "u": "https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/"
+    },
+    {
+     "t": "OpenAI — The Hugging Face incident and the road ahead",
+     "u": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+    }
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "evidence": "OpenAI's own account. It gives no dates for the posts, does not name the hosting services, and says it cannot identify the people affected."
   }
  ],
  "links": [
@@ -4600,6 +4634,11 @@
   {
    "from": "dm-split",
    "to": "lf-emergence",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-paste",
+   "to": "oa-images",
    "rel": "parallel"
   }
  ],
