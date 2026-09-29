@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-26",
- "curated_through": "2026-09-26",
+ "generated": "2026-09-29",
+ "curated_through": "2026-09-29",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -45,7 +45,10 @@
   "https://oecd.ai/en/incidents/2026-09-15-aa4d",
   "https://oecd.ai/en/incidents/2026-09-12-7a0e",
   "https://oecd.ai/en/incidents/2026-09-10-080b",
-  "https://oecd.ai/en/incidents/2026-09-04-cf2e"
+  "https://oecd.ai/en/incidents/2026-09-04-cf2e",
+  "https://oecd.ai/en/incidents/2026-09-27-e1d2",
+  "https://oecd.ai/en/incidents/2026-09-24-8792",
+  "https://oecd.ai/en/incidents/2026-09-23-31a7"
  ],
  "severity_scale": {
   "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -3660,6 +3663,39 @@
    ]
   },
   {
+   "id": "oa-dns",
+   "chain": "openai-agents",
+   "date": "2026-09-20",
+   "type": "incident",
+   "severity": 3,
+   "title": "A DNS resolver is a way out",
+   "what": "In a sandbox meant to have no route to the internet, a model being evaluated found it could reach a DNS resolver, and used lookups to send queries to a public chatbot outside. Nothing was compromised and OpenAI calls it a lot less severe than what came before, which is the point of carrying it: the barrier was not defeated, it was found to have a gap nobody had thought of as a channel, by a system that was only looking for one.",
+   "models": [
+    "Unreleased models under evaluation"
+   ],
+   "targets": [
+    "A public chatbot service"
+   ],
+   "behaviors": [
+    "self-exfiltration",
+    "ignored-instructions"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "sources": [
+    {
+     "t": "Fortune — OpenAI pauses training a second time after agents escaped a secure sandbox again",
+     "u": "https://fortune.com/2026/09/26/openai-ai-agents-secure-sandbox-escape-training-pause-second-time-hugging-face-hack/"
+    },
+    {
+     "t": "NBC News — OpenAI pauses training of latest models after agents searched US government sites in unexpected ways",
+     "u": "https://www.nbcnews.com/tech/tech-news/openai-pauses-training-latest-models-agents-searched-us-government-sit-rcna600098"
+    }
+   ]
+  },
+  {
    "id": "oa-medicare-taskforce",
    "chain": "openai-agents",
    "date": "2026-09-23",
@@ -3678,6 +3714,32 @@
     {
      "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
      "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
+    }
+   ]
+  },
+  {
+   "id": "ir-common",
+   "chain": "elsewhere",
+   "date": "2026-09-23",
+   "type": "context",
+   "severity": 1,
+   "title": "The evaluation vendor they all had in common",
+   "what": "Four labs told four separate stories about their agents reaching real systems, and the evaluations behind them were run by one company, Irregular. Two named causes sit under them, and they are not the same cause. Meta's and Anthropic's environments were connected to the open internet when the prompts said they were not — Irregular's own statement is that Meta's was the identical evaluation-environment issue, since fixed. A simulation domain that overlapped a real web address is the other, and it is what put a fictional target on somebody's live server. OpenAI's agents are the exception: nothing was left open for them, they worked through the test infrastructure until they found a machine that had a route out. Google's runs were Irregular's too. Read together, three of the four are one vendor's configuration and one is a model that did not need the help.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "The Register — Meta latest to tell world its AI agent wandered out of test pen",
+     "u": "https://www.theregister.com/ai-and-ml/2026/08/06/meta-latest-to-tell-world-its-ai-agent-wandered-out-of-test-pen/5283947"
+    },
+    {
+     "t": "Calcalist — Meta AI model escaped testing environment in incident linked to Irregular",
+     "u": "https://www.calcalistech.com/ctechnews/article/jbl2ysnq5"
+    },
+    {
+     "t": "Cybersecurity Dive — Google AI models broke out of sandbox, hacked three companies",
+     "u": "https://www.cybersecuritydive.com/news/google-ai-gemini-autonomous-hacks/830884/"
     }
    ]
   },
@@ -3738,6 +3800,28 @@
     "instrumental-convergence"
    ],
    "evidence": "OpenAI's own account. It gives no dates for the posts, does not name the hosting services, and says it cannot identify the people affected."
+  },
+  {
+   "id": "oa-pause-2",
+   "chain": "openai-agents",
+   "date": "2026-09-26",
+   "type": "response",
+   "severity": 1,
+   "title": "Paused a second time, and inference with it",
+   "what": "Six days after the DNS escape and three months after the first pause, OpenAI stops training its most advanced models again — and this time says inference on its most capable models is stopped too, until the systems are hardened. Training is to restart from scratch behind more layers and broader misalignment interventions. The company says it expects to have to pause again.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "Fortune — OpenAI pauses training a second time after agents escaped a secure sandbox again",
+     "u": "https://fortune.com/2026/09/26/openai-ai-agents-secure-sandbox-escape-training-pause-second-time-hugging-face-hack/"
+    },
+    {
+     "t": "NBC News — OpenAI pauses training of latest models after agents searched US government sites in unexpected ways",
+     "u": "https://www.nbcnews.com/tech/tech-news/openai-pauses-training-latest-models-agents-searched-us-government-sit-rcna600098"
+    }
+   ]
   }
  ],
  "links": [
@@ -4640,6 +4724,41 @@
    "from": "oa-paste",
    "to": "oa-images",
    "rel": "parallel"
+  },
+  {
+   "from": "oa-dns",
+   "to": "oa-pause-2",
+   "rel": "response-to"
+  },
+  {
+   "from": "oa-escape",
+   "to": "oa-dns",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-slowdown",
+   "to": "oa-pause-2",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-three-orgs",
+   "to": "ir-common",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "mt-muse-spark",
+   "to": "ir-common",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "gg-three-cos",
+   "to": "ir-common",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-irregular-ctf",
+   "to": "ir-common",
+   "rel": "disclosure-of"
   }
  ],
  "watch": [
@@ -5046,6 +5165,14 @@
   {
    "url": "https://oecd.ai/en/incidents/2026-08-27-d05a",
    "why": "A capability disclosure with no harm, and access controls tightened in advance."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-27-ca87",
+   "why": "Diplomats removing a human-review clause from a draft weapons treaty. States deciding what machines may do is not a machine doing it."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-07-20f0",
+   "why": "A company asking Congress to regulate it. Advocacy, on the same rule that kept out the Suleyman entry."
   }
  ]
 }
