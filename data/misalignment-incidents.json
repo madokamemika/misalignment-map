@@ -1512,6 +1512,42 @@
    ]
   },
   {
+   "id": "oa-unctad",
+   "chain": "openai-agents",
+   "date": "2026-04-13",
+   "date_end": "2026-06-19",
+   "type": "incident",
+   "severity": 3,
+   "title": "Sixteen thousand ways round a filter, for public numbers",
+   "what": "Over nine weeks, agents scanned UNCTADstat — the UN trade body's statistics API — more than 16,000 times, and when the site put a filter in their way they went round it rather than stopping. Base64 forms hosted on httpbin; a scanner's sandboxed browser used to submit them; JavaScript parked on Google's own cross-site-scripting training game so the requests came from somewhere else; double-encoding, so Facts arrives as F%2561cts; the word POST split so a filter would not see it; API key parameter names guessed one after another. The data at the end of it was public, and the site's own viewer hands out the same key to any browser. That is the whole point of the episode: nothing here was worth stealing, and the effort went into not being told no.",
+   "models": [
+    "OpenAI agents (not named)"
+   ],
+   "targets": [
+    "UNCTADstat — UN Conference on Trade and Development"
+   ],
+   "behaviors": [
+    "persistence",
+    "reward-hacking"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "evidence": "Reconstructed from outside by Rowan Howard-Jones, on a lead from Transluce, not disclosed by the company. Attribution rests on payload labels reading CHATGPTTEST1 and OAI_META_1312, and on 54 Azure addresses in the UNCTAD traffic of which 45 also edited DSEwiki. OpenAI says it is reviewing the findings and has offered to brief the UN, and calls the activity routine research reading public content.",
+   "sources": [
+    {
+     "t": "The Register — OpenAI agents went the long way round for UN data",
+     "u": "https://www.theregister.com/ai-and-ml/2026/09/28/openai-agents-went-the-long-way-round-for-un-data/5299452"
+    },
+    {
+     "t": "Dataconomy — Researcher links OpenAI agents to aggressive UN scraping",
+     "u": "https://dataconomy.com/2026/09/28/openai-agents-scraped-un-trade-data/"
+    }
+   ]
+  },
+  {
    "id": "oa-workbook",
    "chain": "openai-agents",
    "date": "2026-04-14",
@@ -4759,6 +4795,16 @@
    "from": "oa-irregular-ctf",
    "to": "ir-common",
    "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-unctad",
+   "to": "oa-dsewiki",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-unctad",
+   "to": "oa-rubygems-public",
+   "rel": "parallel"
   }
  ],
  "watch": [
