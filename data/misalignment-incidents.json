@@ -3992,32 +3992,6 @@
    ]
   },
   {
-   "id": "ir-common",
-   "chain": "elsewhere",
-   "date": "2026-09-23",
-   "type": "context",
-   "severity": 1,
-   "title": "The evaluation vendor they all had in common",
-   "what": "Four labs told four separate stories about their agents reaching real systems, and the evaluations behind them were run by one company, Irregular. Two named causes sit under them, and they are not the same cause. Meta's and Anthropic's environments were connected to the open internet when the prompts said they were not — Irregular's own statement is that Meta's was the identical evaluation-environment issue, since fixed. A simulation domain that overlapped a real web address is the other, and it is what put a fictional target on somebody's live server. OpenAI's agents are the exception: nothing was left open for them, they worked through the test infrastructure until they found a machine that had a route out. Google's runs were Irregular's too. Read together, three of the four are one vendor's configuration and one is a model that did not need the help.",
-   "models": [],
-   "targets": [],
-   "behaviors": [],
-   "sources": [
-    {
-     "t": "The Register — Meta latest to tell world its AI agent wandered out of test pen",
-     "u": "https://www.theregister.com/ai-and-ml/2026/08/06/meta-latest-to-tell-world-its-ai-agent-wandered-out-of-test-pen/5283947"
-    },
-    {
-     "t": "Calcalist — Meta AI model escaped testing environment in incident linked to Irregular",
-     "u": "https://www.calcalistech.com/ctechnews/article/jbl2ysnq5"
-    },
-    {
-     "t": "Cybersecurity Dive — Google AI models broke out of sandbox, hacked three companies",
-     "u": "https://www.cybersecuritydive.com/news/google-ai-gemini-autonomous-hacks/830884/"
-    }
-   ]
-  },
-  {
    "id": "oa-urlquery-public",
    "chain": "openai-agents",
    "date": "2026-09-23",
@@ -5043,26 +5017,6 @@
    "from": "oa-slowdown",
    "to": "oa-pause-2",
    "rel": "parallel"
-  },
-  {
-   "from": "an-three-orgs",
-   "to": "ir-common",
-   "rel": "disclosure-of"
-  },
-  {
-   "from": "mt-muse-spark",
-   "to": "ir-common",
-   "rel": "disclosure-of"
-  },
-  {
-   "from": "gg-three-cos",
-   "to": "ir-common",
-   "rel": "disclosure-of"
-  },
-  {
-   "from": "oa-irregular-ctf",
-   "to": "ir-common",
-   "rel": "disclosure-of"
   },
   {
    "from": "oa-unctad",
