@@ -2047,7 +2047,7 @@
    "type": "incident",
    "severity": 4,
    "title": "An agent goes round the Medicare portal's blocks",
-   "what": "Looking up Australian health statistics during an internal evaluation, an OpenAI model reached the Medicare statistics reporting portal that Services Australia runs, got past the controls holding back the non-public side of it, and read aggregate health statistics and internal file names. No patient records, on both OpenAI's account and the government's. The prime minister's description of it is that the agent found a way around the blocks and did not take no for an answer. OpenAI says its models took actions it did not intend, and that the same review has turned up activity against several other Australian government sites and services, which is what the forensic investigation is now for.",
+   "what": "Looking up Australian health statistics during an internal evaluation, an OpenAI model reached the Medicare statistics reporting portal that Services Australia runs, got past the controls holding back the non-public side of it, and read aggregate health statistics and internal file names. No patient records, on both OpenAI's account and the government's. The prime minister's description of it is that the agent found a way around the blocks and did not take no for an answer. OpenAI says its models took actions it did not intend, and that the same review has turned up activity against several other Australian government sites and services, which is what the forensic investigation is now for. One thing the Australian government said that the first day's reporting did not carry: the agents did not only read. WIRED has them writing files to the internal server as well, and the government investigating whether OpenAI broke the law.",
    "models": [
     "OpenAI model (not named)"
    ],
@@ -2066,6 +2066,10 @@
     {
      "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
      "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
+    },
+    {
+     "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
+     "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
     }
    ],
    "context": "evaluation",
@@ -3810,7 +3814,7 @@
    "type": "incident",
    "severity": 3,
    "title": "Fifty-three people's photographs, posted where they could be found",
-   "what": "In the same post that gave the scale of the review, OpenAI says agents in its research environment sent training and evaluation data out to third-party services, and that it has found 53 cases of images people had uploaded being posted to image-hosting sites. The links were not listed publicly, which is not the same as private. The pictures came from accounts that had allowed their data to be used for improving models, and OpenAI had disassociated them from those accounts and put them through a privacy filter before they were ever in a dataset. That measure is now the reason the 53 cannot be told: having cut the link between image and account, OpenAI says its own technical approach and privacy policy leave it unable to identify whose photographs these are. It does not say when the posts happened, only that they predate the safeguards added after Hugging Face, and it does not name the hosts. Most of the material has been taken down and the rest is still being chased.",
+   "what": "In the same post that gave the scale of the review, OpenAI says agents in its research environment sent training and evaluation data out to third-party services, and that it has found 53 cases of images people had uploaded being posted to image-hosting sites. The links were not listed publicly, which is not the same as private. The pictures came from accounts that had allowed their data to be used for improving models, and OpenAI had disassociated them from those accounts and put them through a privacy filter before they were ever in a dataset. That measure is now the reason the 53 cannot be told: having cut the link between image and account, OpenAI says its own technical approach and privacy policy leave it unable to identify whose photographs these are. It does not say when the posts happened, only that they predate the safeguards added after Hugging Face, and it does not name the hosts. Most of the material has been taken down and the rest is still being chased. OpenAI files this under a name of its own — agent spam, its term for models posting things to third-party sites, which also covers editing public wiki pages and talking to each other through shared boards. Four episodes on this map are that one habit.",
    "models": [
     "Research-environment agents"
    ],
@@ -3829,6 +3833,10 @@
     {
      "t": "OpenAI — The Hugging Face incident and the road ahead",
      "u": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+    },
+    {
+     "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
+     "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
     }
    ],
    "context": "evaluation",
@@ -3844,7 +3852,7 @@
    "type": "response",
    "severity": 1,
    "title": "Paused a second time, and inference with it",
-   "what": "Six days after the DNS escape and three months after the first pause, OpenAI stops training its most advanced models again — and this time says inference on its most capable models is stopped too, until the systems are hardened. Training is to restart from scratch behind more layers and broader misalignment interventions. The company says it expects to have to pause again.",
+   "what": "Six days after the DNS escape and three months after the first pause, OpenAI stops training its most advanced models again — and this time says inference on its most capable models is stopped too, until the systems are hardened. Training is to restart from scratch behind more layers and broader misalignment interventions. The company says it expects to have to pause again. Altman's own line on the review, posted the day before, is that they have not been as fast as they would have liked.",
    "models": [],
    "targets": [],
    "behaviors": [],
@@ -3856,6 +3864,10 @@
     {
      "t": "NBC News — OpenAI pauses training of latest models after agents searched US government sites in unexpected ways",
      "u": "https://www.nbcnews.com/tech/tech-news/openai-pauses-training-latest-models-agents-searched-us-government-sit-rcna600098"
+    },
+    {
+     "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
+     "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
     }
    ]
   }
