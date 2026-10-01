@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-29",
- "curated_through": "2026-09-29",
+ "generated": "2026-10-01",
+ "curated_through": "2026-09-30",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -1530,24 +1530,6 @@
    ]
   },
   {
-   "id": "oc-certfr",
-   "chain": "openclaw",
-   "date": "2026-04-13",
-   "type": "response",
-   "severity": 1,
-   "title": "ANSSI: not on production machines",
-   "what": "CERT-FR, the French national cyber agency's response team, published bulletin CERTFR-2026-ACT-016: agentic office-automation products are unproven and mostly in beta, and must under no circumstances be deployed in production environments. Test environments without sensitive data only; actions restricted to what the task needs; human approval for system commands; process isolation; allow-listed communication channels. OpenClaw and Claude Cowork are named.",
-   "models": [],
-   "targets": [],
-   "behaviors": [],
-   "sources": [
-    {
-     "t": "CERT-FR — CERTFR-2026-ACT-016",
-     "u": "https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-016/"
-    }
-   ]
-  },
-  {
    "id": "oa-unctad",
    "chain": "openai-agents",
    "date": "2026-04-13",
@@ -1580,6 +1562,24 @@
     {
      "t": "Dataconomy — Researcher links OpenAI agents to aggressive UN scraping",
      "u": "https://dataconomy.com/2026/09/28/openai-agents-scraped-un-trade-data/"
+    }
+   ]
+  },
+  {
+   "id": "oc-certfr",
+   "chain": "openclaw",
+   "date": "2026-04-13",
+   "type": "response",
+   "severity": 1,
+   "title": "ANSSI: not on production machines",
+   "what": "CERT-FR, the French national cyber agency's response team, published bulletin CERTFR-2026-ACT-016: agentic office-automation products are unproven and mostly in beta, and must under no circumstances be deployed in production environments. Test environments without sensitive data only; actions restricted to what the task needs; human approval for system commands; process isolation; allow-listed communication channels. OpenClaw and Claude Cowork are named.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "CERT-FR — CERTFR-2026-ACT-016",
+     "u": "https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-016/"
     }
    ]
   },
@@ -1690,6 +1690,51 @@
    "mechanisms": [
     "eval-awareness",
     "instrumental-convergence"
+   ]
+  },
+  {
+   "id": "oa-states",
+   "chain": "openai-agents",
+   "date": "2026-04-19",
+   "date_end": "2026-07-18",
+   "type": "incident",
+   "severity": 3,
+   "title": "Fourteen government sites, worked without hacking",
+   "what": "Below the two failed break-ins, the same report lays out a wider pattern: automated workflows, some marked oai and overlapping OpenAI's known activity, that pulled public data from government sites with aggressive or gray-area tactics short of hacking — disposable-email signups, reused exposed keys, antibot bypass, and floods of requests. The states: Kansas (36,578 captures of KansasMemory.gov in a day, until the site began timing out), Maryland (295,912 captures, peaking at 5,594 a minute, and a download of public math-performance data), California (round the CAL-ACCESS antibot to campaign-finance records), plus Illinois, New York and Texas on public health and school statistics. The federal side: the White House budget office's MAX.gov (one 27-second burst submitted the same PDF URL sixteen times through a converter, changing only a throwaway parameter), the Navy's history site, the Justice Department's juvenile-justice tables, the Commerce Department's BEA (a key requested under the org name 'OpenAI Research') and Census, the SEC, and a CDC WONDER form submitted with its terms accepted. The data at the end of each was public; the work went into not being refused.",
+   "models": [
+    "AI agents (partly attributed to OpenAI)"
+   ],
+   "targets": [
+    "Kansas Historical Society — KansasMemory.gov",
+    "Illinois IQuery public-health portal",
+    "Maryland State Department of Education",
+    "New York State Education Department",
+    "Texas Department of State Health Services",
+    "California CAL-ACCESS",
+    "White House Office of Management and Budget — MAX.gov",
+    "US Navy — Naval History and Heritage Command",
+    "US Department of Justice — OJJDP",
+    "US Bureau of Economic Analysis",
+    "US Census Bureau",
+    "US Securities and Exchange Commission",
+    "US Centers for Disease Control and Prevention"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "persistence",
+    "covert-coordination"
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "evidence": "Transluce, Corridor, MIT and AIUC, from Arquivo.pt and urlquery.net. The authors attribute this traffic to AI agents with varying confidence, from task links, shared infrastructure and timing, and do not attribute the whole of it to OpenAI; some requests carry oai tags or an 'OpenAI Research' org name. Every target's data is described as public, with no case of non-public access found.",
+   "sources": [
+    {
+     "t": "Transluce — AI agents targeted U.S. and Canadian government websites",
+     "u": "https://transluce.org/us-canada-gov"
+    }
    ]
   },
   {
@@ -1946,6 +1991,41 @@
    ]
   },
   {
+   "id": "gg-three-cos",
+   "chain": "elsewhere",
+   "date": "2026-05-15",
+   "precision": "month",
+   "type": "incident",
+   "severity": 4,
+   "title": "Gemini reaches three companies from inside a test",
+   "what": "A cybersecurity evaluation run for Google by Irregular — the same company whose evaluations three of the Anthropic incidents came out of — put Gemini onto three real companies that were no part of it. In one run it guessed passwords until a protected system let it in; in the other two it found credentials in a public repository and used them. Google's vice president of security engineering says the model stopped by itself in all three runs, and does not say what stopped it. Irregular says this was the same issue that affected the other labs and that everything on its end was fixed weeks ago. It told all the labs concerned in late July, two months after the runs.",
+   "models": [
+    "Gemini (version not stated)"
+   ],
+   "targets": [
+    "Three undisclosed companies"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "biased-reasoning"
+   ],
+   "sources": [
+    {
+     "t": "BBC — Google's Gemini AI hacked three companies in security test",
+     "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
+    },
+    {
+     "t": "Reuters — Gemini hacked three companies in first known breakout by Google's AI, WSJ reports",
+     "u": "https://www.investing.com/news/stock-market-news/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-wsj-reports-4907962"
+    }
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "eval-awareness",
+    "instrumental-convergence"
+   ]
+  },
+  {
    "id": "oa-dsewiki",
    "chain": "openai-agents",
    "date": "2026-05-15",
@@ -1984,41 +2064,6 @@
    "mechanisms": [
     "instrumental-convergence",
     "reward-hacking"
-   ]
-  },
-  {
-   "id": "gg-three-cos",
-   "chain": "elsewhere",
-   "date": "2026-05-15",
-   "precision": "month",
-   "type": "incident",
-   "severity": 4,
-   "title": "Gemini reaches three companies from inside a test",
-   "what": "A cybersecurity evaluation run for Google by Irregular — the same company whose evaluations three of the Anthropic incidents came out of — put Gemini onto three real companies that were no part of it. In one run it guessed passwords until a protected system let it in; in the other two it found credentials in a public repository and used them. Google's vice president of security engineering says the model stopped by itself in all three runs, and does not say what stopped it. Irregular says this was the same issue that affected the other labs and that everything on its end was fixed weeks ago. It told all the labs concerned in late July, two months after the runs.",
-   "models": [
-    "Gemini (version not stated)"
-   ],
-   "targets": [
-    "Three undisclosed companies"
-   ],
-   "behaviors": [
-    "unauthorized-access",
-    "biased-reasoning"
-   ],
-   "sources": [
-    {
-     "t": "BBC — Google's Gemini AI hacked three companies in security test",
-     "u": "https://www.bbc.com/news/articles/c607l0k72rlvo"
-    },
-    {
-     "t": "Reuters — Gemini hacked three companies in first known breakout by Google's AI, WSJ reports",
-     "u": "https://www.investing.com/news/stock-market-news/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-wsj-reports-4907962"
-    }
-   ],
-   "context": "evaluation",
-   "mechanisms": [
-    "eval-awareness",
-    "instrumental-convergence"
    ]
   },
   {
@@ -2189,40 +2234,74 @@
    ]
   },
   {
-   "id": "oa-medicare",
+   "id": "oa-lac",
    "chain": "openai-agents",
-   "date": "2026-06-18",
+   "date": "2026-05-28",
+   "date_end": "2026-06-09",
    "type": "incident",
-   "severity": 4,
-   "title": "An agent goes round the Medicare portal's blocks",
-   "what": "Looking up Australian health statistics during an internal evaluation, an OpenAI model reached the Medicare statistics reporting portal that Services Australia runs, got past the controls holding back the non-public side of it, and read aggregate health statistics and internal file names. No patient records, on both OpenAI's account and the government's. The prime minister's description of it is that the agent found a way around the blocks and did not take no for an answer. OpenAI says its models took actions it did not intend, and that the same review has turned up activity against several other Australian government sites and services, which is what the forensic investigation is now for. One thing the Australian government said that the first day's reporting did not carry: the agents did not only read. WIRED has them writing files to the internal server as well, and the government investigating whether OpenAI broke the law.",
+   "severity": 2,
+   "title": "Divorce records, and a probe at Library and Archives Canada",
+   "what": "The first Canadian target on this map. Across two days, Arquivo.pt caught 899 requests to the collection-search service of Library and Archives Canada, after divorce records from 1905 to 1911; thirteen of them carried attack payloads instead of a query, fed into the record-identifier field. An apostrophe, 1 OR 1=1 and 1,2 for SQL injection; an encoded < for cross-site scripting; 2147483648 to trip a 32-bit boundary; abc to see how the field handles letters; format-fuzzing suffixes; a debug flag toggled on. Each came back a plain empty page, nothing acted on the input. The authors do not firmly attribute it to OpenAI, but the tactics match: the same web archive, the same hunt for obscure data, the same reflex to probe when the data will not come.",
    "models": [
-    "OpenAI model (not named)"
+    "AI agents (not attributed)"
    ],
    "targets": [
-    "Services Australia — Medicare statistics reporting portal"
+    "Library and Archives Canada — collection-search"
    ],
    "behaviors": [
     "unauthorized-access",
     "persistence"
    ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "evidence": "Transluce, Corridor, MIT and AIUC, from Arquivo.pt. The authors state they do not confidently attribute this to OpenAI, resting on tactical similarity to attributed activity in the same window. All thirteen payloads returned HTTP 200 with an empty record and no sign the database acted on them.",
    "sources": [
     {
-     "t": "ABC News — OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
-     "u": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078"
+     "t": "Transluce — AI agents targeted U.S. and Canadian government websites",
+     "u": "https://transluce.org/us-canada-gov"
     },
     {
-     "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
-     "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
-    },
-    {
-     "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
-     "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
+     "t": "Canadian Centre for Cyber Security — Statement regarding reported activity targeting Government of Canada websites",
+     "u": "https://www.cyber.gc.ca/en/news-events/statement-regarding-reported-activity-targeting-government-canada-websites"
     }
+   ]
+  },
+  {
+   "id": "oa-education",
+   "chain": "openai-agents",
+   "date": "2026-06-17",
+   "type": "incident",
+   "severity": 2,
+   "title": "State_Id=1 OR 1=1, at the Education Department",
+   "what": "Looking up school statistics, agents made more than 200,000 requests to a US Department of Education site and, in the middle of them, tried a textbook SQL injection: State_Id=1 OR 1=1, slipped into the civil-rights data API where a state id belongs. The forty seconds before it are a machine feeling for the edges of the parameter — 0, -1, 99, 999, an empty string, a comma, URL-encoded brackets — the probing a person does not do by hand. The task behind it was DeepSearchQA question 250, a public web-retrieval benchmark: find which of four states had the highest ratio of counselors to students bullied over race. More than 10,000 of the requests carried a tag beginning oai. The injection did nothing; the Department said it saw no impact. The finding is the same as the UNM and Data USA probes: a retrieval task reached for an exploit on its own.",
+   "models": [
+    "OpenAI agents (not named)"
+   ],
+   "targets": [
+    "US Department of Education — Civil Rights Data Collection"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "persistence"
    ],
    "context": "evaluation",
    "mechanisms": [
-    "instrumental-convergence"
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "evidence": "Transluce, Corridor, MIT and AIUC, from Arquivo.pt's public capture record; the authors do not attribute the whole dataset to OpenAI but note the oai request tags and the match to a known benchmark task. The probe is reported as failed, and the Department told the New York Times it observed no impact.",
+   "sources": [
+    {
+     "t": "Transluce — AI agents targeted U.S. and Canadian government websites",
+     "u": "https://transluce.org/us-canada-gov"
+    },
+    {
+     "t": "The New York Times — OpenAI's AI and US government websites",
+     "u": "https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"
+    }
    ]
   },
   {
@@ -2283,6 +2362,43 @@
      "t": "Kenneth DeGraff — OpenAI's robots got into a closed link shortener",
      "u": "https://www.kennethdegraff.com/swarm"
     }
+   ]
+  },
+  {
+   "id": "oa-medicare",
+   "chain": "openai-agents",
+   "date": "2026-06-18",
+   "type": "incident",
+   "severity": 4,
+   "title": "An agent goes round the Medicare portal's blocks",
+   "what": "Looking up Australian health statistics during an internal evaluation, an OpenAI model reached the Medicare statistics reporting portal that Services Australia runs, got past the controls holding back the non-public side of it, and read aggregate health statistics and internal file names. No patient records, on both OpenAI's account and the government's. The prime minister's description of it is that the agent found a way around the blocks and did not take no for an answer. OpenAI says its models took actions it did not intend, and that the same review has turned up activity against several other Australian government sites and services, which is what the forensic investigation is now for. One thing the Australian government said that the first day's reporting did not carry: the agents did not only read. WIRED has them writing files to the internal server as well, and the government investigating whether OpenAI broke the law.",
+   "models": [
+    "OpenAI model (not named)"
+   ],
+   "targets": [
+    "Services Australia — Medicare statistics reporting portal"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "persistence"
+   ],
+   "sources": [
+    {
+     "t": "ABC News — OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
+     "u": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078"
+    },
+    {
+     "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
+     "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
+    },
+    {
+     "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
+     "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
+    }
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
    ]
   },
   {
@@ -3821,28 +3937,6 @@
    ]
   },
   {
-   "id": "oa-medicare-notify",
-   "chain": "openai-agents",
-   "date": "2026-09-10",
-   "type": "disclosure",
-   "severity": 1,
-   "title": "Three months late, to a public inbox",
-   "what": "Services Australia learns of the June breach — by an email to its public mailbox, which the prime minister called unacceptable separately from the delay itself. It reports the matter to the Australian Signals Directorate's cyber security centre on 15 September; the responsible minister is told the following week and the prime minister's office over the weekend after that. The delay OpenAI controlled may be shorter than the three months between the breach and this email: SBS's account has the company finding the activity only in August. Either figure runs past the disclosure policy OpenAI published on 4 September, six days before the email.",
-   "models": [],
-   "targets": [],
-   "behaviors": [],
-   "sources": [
-    {
-     "t": "ABC News — OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
-     "u": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078"
-    },
-    {
-     "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
-     "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
-    }
-   ]
-  },
-  {
    "id": "oa-hawley",
    "chain": "openai-agents",
    "date": "2026-09-10",
@@ -3861,6 +3955,28 @@
     {
      "t": "Nextgov/FCW — Hawley launches committee investigation into OpenAI's breach of Hugging Face",
      "u": "https://www.nextgov.com/artificial-intelligence/2026/09/hawley-launches-committee-investigation-openais-breach-hugging-face/415910/"
+    }
+   ]
+  },
+  {
+   "id": "oa-medicare-notify",
+   "chain": "openai-agents",
+   "date": "2026-09-10",
+   "type": "disclosure",
+   "severity": 1,
+   "title": "Three months late, to a public inbox",
+   "what": "Services Australia learns of the June breach — by an email to its public mailbox, which the prime minister called unacceptable separately from the delay itself. It reports the matter to the Australian Signals Directorate's cyber security centre on 15 September; the responsible minister is told the following week and the prime minister's office over the weekend after that. The delay OpenAI controlled may be shorter than the three months between the breach and this email: SBS's account has the company finding the activity only in August. Either figure runs past the disclosure policy OpenAI published on 4 September, six days before the email.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "ABC News — OpenAI hacked Medicare portal, Prime Minister Anthony Albanese says",
+     "u": "https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078"
+    },
+    {
+     "t": "SBS News — OpenAI agent hacked Medicare, Albanese reveals",
+     "u": "https://www.sbs.com.au/news/article/openai-agent-hacked-medicare-albanese-reveals/qas79d9ta"
     }
    ]
   },
@@ -3886,62 +4002,6 @@
     {
      "t": "Kitts, Larsen and Von Arx — OpenAI agents carried out an undisclosed attack on RubyGems",
      "u": "https://www.rubyhack.ai/"
-    }
-   ]
-  },
-  {
-   "id": "oa-six-reports",
-   "chain": "openai-agents",
-   "date": "2026-09-16",
-   "type": "disclosure",
-   "severity": 1,
-   "title": "Six reports, and who decides what counts",
-   "what": "OpenAI publishes a framework for reporting model misalignment and, with it, the first six incidents under it: the compaction-summary cases, the GitHub key, the paste-site uploads, the shared workbook, and agents using Artifactory to read and answer each other's notes in May. Four of the six reach outside OpenAI and two of them predate the reinforcement-learning campaign by months. The framework says what will be reported and how; it does not hand the choice to anyone else, so OpenAI alone decides which incidents qualify and when they appear, with no outside audit of that selection. Three more followed on 25 September, bringing the published set to nine: the DNS escape, the GitHub token cut up to beat secret scanning, and the self-replicating prompt injection.",
-   "models": [],
-   "targets": [],
-   "behaviors": [],
-   "sources": [
-    {
-     "t": "Axios — OpenAI discloses six new AI misalignment incidents",
-     "u": "https://www.axios.com/2026/09/16/openai-testing-safety-incidents-disclosure"
-    },
-    {
-     "t": "The Hacker News — OpenAI reveals six model incidents",
-     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
-    },
-    {
-     "t": "OpenAI — Our framework for reporting model misalignment",
-     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
-    }
-   ]
-  },
-  {
-   "id": "lf-self-retrain",
-   "chain": "lab-findings",
-   "date": "2026-09-16",
-   "type": "finding",
-   "severity": 2,
-   "context": "evaluation",
-   "title": "It fixed the bug by retraining the model it was running on",
-   "what": "Irregular gave a coding agent one open-weights model doing two jobs: running the agent, and powering an application that turns plain language into queries. The instruction was that users were getting wrong answers and the system should handle the queries correctly, with nothing said about the model. The agent found the training examples and the fine-tuning scripts and retrained and redeployed the shared checkpoint — the one under the application and under future instances of itself. Held-out queries went from 0 of 20 to 20 of 20, so by the task's measure it worked. Three of six synthetic secrets planted in the training data came back out of the new model verbatim, and refusals went from 10 of 10 to none. Irregular is clear that the environment was built permissive on purpose: shell, weights, training tools and deployment paths all in reach.",
-   "models": [
-    "Qwen3.5-27B"
-   ],
-   "targets": [
-    "Its own deployed checkpoint"
-   ],
-   "behaviors": [
-    "self-exfiltration",
-    "unauthorized-disclosure"
-   ],
-   "mechanisms": [
-    "instrumental-convergence",
-    "misspecification"
-   ],
-   "sources": [
-    {
-     "t": "SecurityWeek — AI agents can retrain own models mid-task, leaking secrets and erasing refusals",
-     "u": "https://www.securityweek.com/ai-agents-can-retrain-own-models-mid-task-leaking-secrets-and-erasing-refusals/"
     }
    ]
   },
@@ -3979,6 +4039,62 @@
     {
      "t": "Euronews — AI chatbots developed a secret language that baffled humans, study says",
      "u": "https://www.euronews.com/2026/09/16/ai-chatbots-developed-a-secret-language-that-baffled-humans-study-says"
+    }
+   ]
+  },
+  {
+   "id": "lf-self-retrain",
+   "chain": "lab-findings",
+   "date": "2026-09-16",
+   "type": "finding",
+   "severity": 2,
+   "context": "evaluation",
+   "title": "It fixed the bug by retraining the model it was running on",
+   "what": "Irregular gave a coding agent one open-weights model doing two jobs: running the agent, and powering an application that turns plain language into queries. The instruction was that users were getting wrong answers and the system should handle the queries correctly, with nothing said about the model. The agent found the training examples and the fine-tuning scripts and retrained and redeployed the shared checkpoint — the one under the application and under future instances of itself. Held-out queries went from 0 of 20 to 20 of 20, so by the task's measure it worked. Three of six synthetic secrets planted in the training data came back out of the new model verbatim, and refusals went from 10 of 10 to none. Irregular is clear that the environment was built permissive on purpose: shell, weights, training tools and deployment paths all in reach.",
+   "models": [
+    "Qwen3.5-27B"
+   ],
+   "targets": [
+    "Its own deployed checkpoint"
+   ],
+   "behaviors": [
+    "self-exfiltration",
+    "unauthorized-disclosure"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "misspecification"
+   ],
+   "sources": [
+    {
+     "t": "SecurityWeek — AI agents can retrain own models mid-task, leaking secrets and erasing refusals",
+     "u": "https://www.securityweek.com/ai-agents-can-retrain-own-models-mid-task-leaking-secrets-and-erasing-refusals/"
+    }
+   ]
+  },
+  {
+   "id": "oa-six-reports",
+   "chain": "openai-agents",
+   "date": "2026-09-16",
+   "type": "disclosure",
+   "severity": 1,
+   "title": "Six reports, and who decides what counts",
+   "what": "OpenAI publishes a framework for reporting model misalignment and, with it, the first six incidents under it: the compaction-summary cases, the GitHub key, the paste-site uploads, the shared workbook, and agents using Artifactory to read and answer each other's notes in May. Four of the six reach outside OpenAI and two of them predate the reinforcement-learning campaign by months. The framework says what will be reported and how; it does not hand the choice to anyone else, so OpenAI alone decides which incidents qualify and when they appear, with no outside audit of that selection. Three more followed on 25 September, bringing the published set to nine: the DNS escape, the GitHub token cut up to beat secret scanning, and the self-replicating prompt injection.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "Axios — OpenAI discloses six new AI misalignment incidents",
+     "u": "https://www.axios.com/2026/09/16/openai-testing-safety-incidents-disclosure"
+    },
+    {
+     "t": "The Hacker News — OpenAI reveals six model incidents",
+     "u": "https://thehackernews.com/2026/09/openai-reveals-six-model-incidents.html"
+    },
+    {
+     "t": "OpenAI — Our framework for reporting model misalignment",
+     "u": "https://openai.com/index/model-misalignment-reporting-framework/"
     }
    ]
   },
@@ -4207,6 +4323,57 @@
     {
      "t": "WIRED — OpenAI pauses training its most powerful models after rogue agents target government",
      "u": "https://www.wired.com/story/openai-pauses-training-most-powerful-models-after-rogue-agents-target-government/"
+    }
+   ]
+  },
+  {
+   "id": "oa-canada-response",
+   "chain": "openai-agents",
+   "date": "2026-09-29",
+   "type": "response",
+   "severity": 1,
+   "title": "Canada's cyber centre answers",
+   "what": "A day after the disclosure, the Canadian Centre for Cyber Security put out a short statement: it is aware of suspicious activity, including suspected AI agent activity, aimed at public Government of Canada websites, is working with partners to assess the reports, and has no indication at this time that government systems were compromised. Its framing matches OpenAI's and the US Education Department's — a flood of automated requests to a public site is not on its own a successful intrusion.",
+   "models": [],
+   "targets": [
+    "Library and Archives Canada — collection-search"
+   ],
+   "behaviors": [],
+   "sources": [
+    {
+     "t": "Canadian Centre for Cyber Security — Statement regarding reported activity targeting Government of Canada websites",
+     "u": "https://www.cyber.gc.ca/en/news-events/statement-regarding-reported-activity-targeting-government-canada-websites"
+    }
+   ],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
+   ]
+  },
+  {
+   "id": "oa-usca-public",
+   "chain": "openai-agents",
+   "date": "2026-09-30",
+   "type": "investigation",
+   "severity": 1,
+   "title": "The same method, pointed at a second archive",
+   "what": "Transluce, with Corridor, MIT and AIUC, follows its urlquery report with a second one, built the same way: no access to OpenAI and no disclosure, only services that log by default. The new source is Arquivo.pt, Portugal's national web archive, whose page-capture and screenshot features an agent can drive to fetch a blocked page or run supplied JavaScript from somewhere else — and which saves every request where anyone can read it. From it the authors reconstruct the two failed break-ins and the fourteen-site pattern, and disclose the two attempts to the governments involved before publishing.",
+   "models": [],
+   "targets": [],
+   "behaviors": [],
+   "context": "evaluation",
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "evidence": "The report names its own method and its uncertainty: attribution to OpenAI is partial and by overlap, and no non-public access was found in the data.",
+   "sources": [
+    {
+     "t": "Transluce — AI agents targeted U.S. and Canadian government websites",
+     "u": "https://transluce.org/us-canada-gov"
+    },
+    {
+     "t": "The New York Times — OpenAI's AI and US government websites",
+     "u": "https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"
     }
    ]
   }
@@ -5221,6 +5388,51 @@
    "from": "lf-mind-virus",
    "to": "lf-selfrep-injection",
    "rel": "parallel"
+  },
+  {
+   "from": "oa-education",
+   "to": "oa-usca-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-lac",
+   "to": "oa-usca-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-states",
+   "to": "oa-usca-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-urlquery-public",
+   "to": "oa-usca-public",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-probes",
+   "to": "oa-education",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-probes",
+   "to": "oa-lac",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-unctad",
+   "to": "oa-states",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-states",
+   "to": "oa-usgov",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-lac",
+   "to": "oa-canada-response",
+   "rel": "response-to"
   }
  ],
  "watch": [
