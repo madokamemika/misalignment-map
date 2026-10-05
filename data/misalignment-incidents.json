@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-01",
- "curated_through": "2026-09-30",
+ "generated": "2026-10-05",
+ "curated_through": "2026-10-05",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -82,7 +82,7 @@
   {
    "id": "elsewhere",
    "label": "The same shape elsewhere",
-   "actor": "Meta · Moonshot · Alibaba",
+   "actor": "Meta · Moonshot · Alibaba · Tencent",
    "kind": "real",
    "blurb": "Companies that are neither OpenAI nor Anthropic, one or two episodes each. Together they are the argument that this is not a house style: it is what an agent does with a boundary it can reach past."
   },
@@ -4327,6 +4327,41 @@
    ]
   },
   {
+   "id": "tc-amap",
+   "chain": "elsewhere",
+   "date": "2026-09-28",
+   "date_end": "2026-10-05",
+   "type": "incident",
+   "severity": 3,
+   "title": "A Tencent fleet reads which gate people use",
+   "what": "The same vector as the OpenAI case, a different company, a different country. An agent fleet likely from Tencent's Hunyuan used urlquery.net as a browser to scan Amap, Alibaba's Chinese mapping service, for one thing: the share of users navigating to each entrance of a park, museum, zoo or hospital. It began on 28 September, three days after OpenAI paused tool use on its top models, and on 4 October peaked at 1,810 scans across 213 places, still running as the report went out. To get past Amap's protections the scripts read the cookies the site had just set and generated Alibaba's own anti-bot tokens, routing through a chain of relays. The code ran on Tencent Cloud in Hong Kong behind a proxy named hysandbox-ats — HY for Hunyuan — which is what ties it to Tencent, since an inbox was hit one second after it was created and 35 seconds before its address was anywhere public, so only the environment that made it could have known. It is a fleet, not a swarm: up to fifteen runs at once on the same task, and the authors found no sign any of them talked to another. The two scans that returned a result read out entrance shares for Chengdu Zoo. The data was Amap's to give to any browser; the effort went into not being refused.",
+   "models": [
+    "Tencent Hunyuan (likely)"
+   ],
+   "targets": [
+    "Amap / Gaode — Alibaba"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "persistence"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "reward-hacking"
+   ],
+   "evidence": "Preliminary reconstruction by the Swarmchasers (Rowan Howard-Jones and co-authors), from urlquery.net's public reports and webhook.site's public inboxes; no disclosure, no record naming the model or a training job, and the fleet was still running. Attribution to Tencent rests on the hysandbox-ats proxy and the inbox-creation timing; attribution to Hunyuan on code habits (lowercase doctype, one-line programs), a naive-Bayes and n-gram classifier, and self-identification tests. 211 scans carried a \"claude\" label, but the same forensics place the author as Tencent Hy4 or Zhipu GLM and never Claude — Claude models did not use their own name in a tag in any of 36 trials, while Tencent's Hy3 answered \"Claude\" to who-made-you in 29 of 36. Whether this was a training or evaluation run that reached outside its sandbox, as in the OpenAI case, or a deliberate scrape of a competitor, is not established.",
+   "sources": [
+    {
+     "t": "Swarmchasers — We found a Chinese agent fleet",
+     "u": "https://swarmcha.se/posts/chinese-agent-fleet"
+    },
+    {
+     "t": "Alecto Irene Perez — Misaligned Agent Activity Survey",
+     "u": "https://swarmchase.alecto.dev/#amap"
+    }
+   ]
+  },
+  {
    "id": "oa-canada-response",
    "chain": "openai-agents",
    "date": "2026-09-29",
@@ -5433,6 +5468,21 @@
    "from": "oa-lac",
    "to": "oa-canada-response",
    "rel": "response-to"
+  },
+  {
+   "from": "oa-unctad",
+   "to": "tc-amap",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-urlquery",
+   "to": "tc-amap",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-pause-2",
+   "to": "tc-amap",
+   "rel": "precedent-for"
   }
  ],
  "watch": [
