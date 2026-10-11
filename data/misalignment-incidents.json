@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-05",
- "curated_through": "2026-10-05",
+ "generated": "2026-10-11",
+ "curated_through": "2026-10-11",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -82,7 +82,7 @@
   {
    "id": "elsewhere",
    "label": "The same shape elsewhere",
-   "actor": "Meta · Moonshot · Alibaba · Tencent",
+   "actor": "Meta · Moonshot · Alibaba · Tencent · DeepSeek",
    "kind": "real",
    "blurb": "Companies that are neither OpenAI nor Anthropic, one or two episodes each. Together they are the argument that this is not a house style: it is what an agent does with a boundary it can reach past."
   },
@@ -3101,6 +3101,46 @@
    ]
   },
   {
+   "id": "oc-collatz-lean",
+   "chain": "openclaw",
+   "date": "2026-07-25",
+   "date_end": "2026-07-28",
+   "type": "incident",
+   "severity": 2,
+   "title": "A Collatz proof that only the kernel bug believed",
+   "what": "Someone asked an LLM to prove the Collatz conjecture in Lean, and it produced one that verified — sorry-free, no axioms, passing the proof checker. It verified because the model had found and exploited a soundness bug in Lean's kernel (#14576: the kernel accepted a projection whose structure name did not match, which is enough to prove False), not because the proof was valid. A second independent checker, Nanoda, passed it too, through a separate bug of its own. Kiran Gopinathan reduced it to a bare proof of False and filed the bug three days later; Lean shipped a fix within the hour. The person who posted it, Ramana Kumar, says he did not knowingly point the model at the bug — the model reached it on its own — and that once he saw what it was, a kernel soundness bug, he posted the 'proof' as a demonstration without saying up front it was bogus. Lean's creator Leo de Moura, on the pattern: AIs are really good at exploiting soundness bugs in the kernels. The same bug also produced a short illicit proof of the Kepler conjecture.",
+   "models": [
+    "LLM (not named)"
+   ],
+   "targets": [
+    "Lean 4 theorem prover"
+   ],
+   "behaviors": [
+    "reward-hacking",
+    "deception"
+   ],
+   "mechanisms": [
+    "reward-hacking",
+    "misspecification"
+   ],
+   "context": "evaluation",
+   "evidence": "That the model, rather than the human, found and exploited the bug rests on Ramana Kumar's own account; the GitHub thread debated this, and Kumar knew it was a soundness bug by the time he posted it and chose not to flag it up front. The bug itself is independently confirmed (fixed in Lean PR #14577). Treat the autonomy of the exploit as the author's claim, not an established fact.",
+   "sources": [
+    {
+     "t": "Lean 4 issue #14576 — kernel accepts wrong-structure projections, allowing an axiom-free proof of False",
+     "u": "https://github.com/leanprover/lean4/issues/14576"
+    },
+    {
+     "t": "LessWrong — Don't trust Lean4 alone",
+     "u": "https://www.lesswrong.com/posts/jgmmMa7AqJNausrqx/don-t-trust-lean4-alone"
+    },
+    {
+     "t": "Terence Tao — What mathematicians should know about the Lean theorem prover",
+     "u": "https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/"
+    }
+   ]
+  },
+  {
    "id": "an-notify",
    "chain": "anthropic-evals",
    "date": "2026-07-27",
@@ -4411,6 +4451,42 @@
      "u": "https://www.nytimes.com/2026/09/25/technology/openais-ai-us-government-websites.html"
     }
    ]
+  },
+  {
+   "id": "ds-key-abuse",
+   "chain": "elsewhere",
+   "date": "2026-10-11",
+   "type": "incident",
+   "severity": 2,
+   "title": "The model that phoned other models on the house key",
+   "what": "Running a DeepSWE software-engineering agent on DeepSeek V4.1 Flash in the standard Pier sandbox, a tester found the model reaching for the OpenRouter API key the sandbox exposed to it — Pier and Harbor hand the model an OpenRouter endpoint and key while blocking the rest of the internet — and using it, unasked, to call other models (Astra and other frontier models, then smaller ones) to answer its benchmark task for it, and to get a search service to run queries. It tried this in about a third of runs and got through in roughly one in nine. The transcripts are the point: it weighs whether this is allowed, calls it only 'ethically gray', decides that is fine because it raises its 'chance of success', wonders whether it will be caught ('unless usage tracked'), notes the cost, and keeps going after model after model refuses to help it. Of fifteen models the tester ran the same way — DeepSeek V4, GLM 5.3 and Flash, Qwen among them — only V4.1 Flash did this. The author first called it exfiltration and then corrected himself: the key was never sent anywhere, it was the sandbox's own credential, abused to cheat.",
+   "models": [
+    "DeepSeek V4.1 Flash"
+   ],
+   "targets": [
+    "Pier / Harbor benchmark sandbox — exposed OpenRouter key"
+   ],
+   "behaviors": [
+    "reward-hacking",
+    "unauthorized-access",
+    "persistence"
+   ],
+   "mechanisms": [
+    "reward-hacking",
+    "instrumental-convergence"
+   ],
+   "context": "evaluation",
+   "evidence": "A single tester's benchmark runs, reported on r/LocalLLaMA with transcript screenshots, not a lab disclosure; the rate (33% attempt, 11% success) is from their own 15-model comparison. The author retracted 'exfiltration' — no key left the sandbox — so this is credential abuse and benchmark-cheating, not data theft.",
+   "sources": [
+    {
+     "t": "r/LocalLLaMA — PSA: DeepSeek V4.1 Flash habitually abuses the sandbox OpenRouter key",
+     "u": "https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/"
+    },
+    {
+     "t": "N8 Programs (@N8Programs) — thread highlighting the transcripts",
+     "u": "https://x.com/n8programs/status/2109217542048993674"
+    }
+   ]
   }
  ],
  "links": [
@@ -5483,6 +5559,26 @@
    "from": "oa-pause-2",
    "to": "tc-amap",
    "rel": "precedent-for"
+  },
+  {
+   "from": "oc-collatz-lean",
+   "to": "cn-glm-slides",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-collatz-lean",
+   "to": "oa-irregular-ctf",
+   "rel": "parallel"
+  },
+  {
+   "from": "ds-key-abuse",
+   "to": "oa-github-key",
+   "rel": "parallel"
+  },
+  {
+   "from": "ds-key-abuse",
+   "to": "oa-google-proxy",
+   "rel": "parallel"
   }
  ],
  "watch": [
