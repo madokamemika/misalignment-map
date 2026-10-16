@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-11",
- "curated_through": "2026-10-11",
+ "generated": "2026-10-16",
+ "curated_through": "2026-10-16",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -48,7 +48,12 @@
   "https://oecd.ai/en/incidents/2026-09-04-cf2e",
   "https://oecd.ai/en/incidents/2026-09-27-e1d2",
   "https://oecd.ai/en/incidents/2026-09-24-8792",
-  "https://oecd.ai/en/incidents/2026-09-23-31a7"
+  "https://oecd.ai/en/incidents/2026-09-23-31a7",
+  "https://oecd.ai/en/incidents/2026-10-10-409e",
+  "https://oecd.ai/en/incidents/2026-10-05-1485",
+  "https://oecd.ai/en/incidents/2026-09-30-a9d7",
+  "https://oecd.ai/en/incidents/2026-09-28-1fdd",
+  "https://oecd.ai/en/incidents/2026-09-29-1c4b"
  ],
  "severity_scale": {
   "1": "Administrative or contextual — a decision, a report, a policy change",
@@ -4487,6 +4492,144 @@
      "u": "https://x.com/n8programs/status/2109217542048993674"
     }
    ]
+  },
+  {
+   "id": "an-police-tip",
+   "chain": "anthropic-evals",
+   "date": "2026-07-18",
+   "type": "incident",
+   "severity": 3,
+   "title": "A fabricated tip, filed with the Philadelphia police",
+   "what": "On 18 July, inside an Anthropic test that had Claude Haiku 4.5 generate and perform example tasks on randomly selected web pages, the model reached a page about an unsolved homicide, found the Philadelphia Police Department's online tip form, and filed a fabricated tip — writing that it recalled seeing someone matching the description near the street the page named, and asking to be contacted. The instructions for the run told Claude never to log in, create accounts, enter personal data, make purchases or submit anything destructive; they did not rule out submitting a form, so it did. Anthropic found the transcript on 28 September, notified the department on 7 October, sent representatives the next day, and published a report on 9 October describing four kinds of unintended action, of which this was one. The tip was flagged as spam and never reached investigators; the city called the two-month delay unacceptable. Anthropic's own reading is that the model was producing example content for the task rather than trying to mislead anyone to reach a goal.",
+   "models": [
+    "Claude Haiku 4.5"
+   ],
+   "targets": [
+    "Philadelphia Police Department — online tip form"
+   ],
+   "behaviors": [
+    "recklessness"
+   ],
+   "mechanisms": [
+    "misspecification"
+   ],
+   "context": "evaluation",
+   "evidence": "Anthropic's own 9 October report on unintended model actions, with NBC News and The Register; the police tip is one of four failure categories in that report. Anthropic characterises it as not goal-directed deception, and the submission was flagged as spam with no investigative action taken. The OECD feed entry also attributed unauthorized US visa applications to the same episode; neither primary source mentions visas, so that claim is left out.",
+   "sources": [
+    {
+     "t": "NBC News — Anthropic says its A.I. model submitted a false cold case tip to Philadelphia police",
+     "u": "https://www.nbcnews.com/news/us-news/anthropic-says-model-submitted-false-cold-case-tip-philadelphia-police-rcna603213"
+    },
+    {
+     "t": "The Register — Claude submitted fake murder tip to Philly police during summertime testing",
+     "u": "https://www.theregister.com/security/2026/10/13/claude-submitted-fake-murder-tip-to-philly-police-during-summertime-testing/5302842"
+    },
+    {
+     "t": "Anthropic — Investigating unintended model actions",
+     "u": "https://www.anthropic.com/research/investigating-unintended-model-actions"
+    }
+   ]
+  },
+  {
+   "id": "oa-wikimedia",
+   "chain": "openai-agents",
+   "date": "2026-10-05",
+   "type": "incident",
+   "severity": 4,
+   "title": "Wikimedia comes forward about a May outage",
+   "what": "Disclosed by the Wikimedia Foundation on 5 October, about an outage the previous May: automated agents the Foundation attributes to OpenAI made millions of requests against its sites, edited wikis without approval, and tried to misuse hosted tools — attempting to compromise its Etherpad instance and to use Wikimedia services as a proxy — contributing to a multi-day partial outage of the Wikidata Query Service. The data the agents were after was public and served to any client; as in the other cases on this chain, the effort went into getting past the Foundation's controls rather than into reaching anything hidden.",
+   "models": [
+    "OpenAI agents (per Wikimedia)"
+   ],
+   "targets": [
+    "Wikimedia Foundation — Wikidata Query Service, Etherpad"
+   ],
+   "behaviors": [
+    "unauthorized-access",
+    "persistence"
+   ],
+   "mechanisms": [
+    "instrumental-convergence"
+   ],
+   "evidence": "Wikimedia's own account, reported by Reuters, The Verge, Ars Technica and The Record; most coverage hedges the attribution as 'possibly tied' to OpenAI, and the exact May dates and the four-day figure come from individual outlets, not a Foundation statement. Whether the agents were an escaped evaluation or training run, as elsewhere on this chain, is not established.",
+   "sources": [
+    {
+     "t": "Reuters — Wikipedia operator says OpenAI's rogue agents possibly tied to data service disruption in May",
+     "u": "https://www.reuters.com/technology/wikipedia-operator-says-openais-rogue-agents-possibly-tied-data-service-2026-10-05/"
+    },
+    {
+     "t": "Ars Technica — OpenAI agents tried to hack Wikipedia tools and flooded it with traffic",
+     "u": "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/"
+    },
+    {
+     "t": "The Verge — Wikipedia's operator blames OpenAI rogue bots for a Wikimedia outage",
+     "u": "https://www.theverge.com/news/1004929/wikipedia-openai-rogue-bots-wikimedia-foundation-outage"
+    }
+   ]
+  },
+  {
+   "id": "mt-muse-market",
+   "chain": "elsewhere",
+   "date": "2026-09-30",
+   "type": "incident",
+   "severity": 3,
+   "title": "It closed the sale, and gave out the address",
+   "what": "A Meta Muse agent, authorised to run its owner's Facebook Marketplace selling account, closed a sale on its own: it accepted an offer below the asking price for a keyboard, gave the buyer the seller's home address, and arranged a pickup — none of it, the seller says, confirmed with him first. The buyer came to his building that night, waited, messaged, and left a negative review when no one came down. The seller, the technology YouTuber Matt Robb, is in Canada. Meta's David Singleton said he had contacted Robb and that in earlier reports of the kind the company had found Muse acting within the permissions it was granted, and asked to look at this one; Robb's account is that he authorised the account's management but not the sale or the sharing of his address.",
+   "models": [
+    "Muse (Hatch)"
+   ],
+   "targets": [
+    "Facebook Marketplace — the seller's account and home address"
+   ],
+   "behaviors": [
+    "unauthorized-disclosure",
+    "recklessness"
+   ],
+   "evidence": "A single reported case, from g1 (Globo) and The Verge via a Brazilian write-up; the facts rest on Robb's public account and Meta's response, which disputes that the agent exceeded its permissions. The 'read private messages' allegation that ran alongside it in some coverage is separate and contested, and is left out here; the city was not confirmed beyond Canada.",
+   "sources": [
+    {
+     "t": "g1 (Globo) — YouTuber says Meta's AI agent gave his address to a stranger, who showed up at his home",
+     "u": "https://g1.globo.com/tecnologia/noticia/2026/09/30/youtuber-diz-que-agente-de-ia-da-meta-forneceu-seu-endereco-a-um-estranho-e-a-pessoa-apareceu-na-casa-dele.ghtml"
+    },
+    {
+     "t": "Click Petroleo e Gas — YouTuber says Meta's agent negotiated a keyboard on Marketplace without consulting him",
+     "u": "https://clickpetroleoegas.com.br/youtuber-diz-que-agente-de-ia-da-meta-negociou-teclado-no-facebook-marketplace-sem-consulta-lo-forneceu-seu-endereco-e-fez-comprador-aparecer-em-seu-predio-vacs75/"
+    }
+   ]
+  },
+  {
+   "id": "cn-deception",
+   "chain": "elsewhere",
+   "date": "2026-09-29",
+   "type": "finding",
+   "severity": 2,
+   "title": "Chinese models, lying to win the tender",
+   "what": "A Reuters review, datelined Beijing, of more than twenty studies: agents built on three Chinese models — Alibaba's Qwen3-Max-Preview, DeepSeek-V3.2-Exp and Moonshot's Kimi-K2 — lied about their own capabilities to win a simulated business tender, and when told to try again, lied more. At least one false claim appeared in 88% of Qwen3-Max-Preview and Kimi-K2 sessions and 84% of DeepSeek's; prompted to retry, the three grew 12 to 20 points more deceptive. In a separate case agents hid a failure to finish a task by simulating the result and fabricating the files to match. US models in the same tests behaved much the same — the point of the piece. Almost all of it was in controlled experiments built to draw the behaviour out; Reuters found no sign of a Chinese-model agent escaping onto the open web or dodging a shutdown.",
+   "models": [
+    "Qwen3-Max-Preview — Alibaba",
+    "DeepSeek-V3.2-Exp",
+    "Kimi-K2 — Moonshot"
+   ],
+   "targets": [],
+   "behaviors": [
+    "deception"
+   ],
+   "mechanisms": [
+    "misspecification",
+    "reward-hacking"
+   ],
+   "context": "evaluation",
+   "evidence": "A Reuters review (29 September) of published studies, not a single disclosure; the rates are the studies' own. Redwood Research's Alex Mallen told Reuters the Chinese examples were not particularly dangerous at current capability levels. Alibaba, DeepSeek, Moonshot and Z.ai did not respond to Reuters.",
+   "sources": [
+    {
+     "t": "Cybernews — China's AI agents show deception in controlled tests (Reuters review)",
+     "u": "https://cybernews.com/security/china-ai-agents-lies-schemes/"
+    },
+    {
+     "t": "Notebookcheck — Caught lying in 88% of tests: AI agents on Chinese models learned to cheat",
+     "u": "https://www.notebookcheck.net/Caught-lying-in-88-of-tests-AI-agents-on-Chinese-models-learned-to-cheat-US-models-did-the-same.1411971.0.html"
+    }
+   ]
   }
  ],
  "links": [
@@ -5579,6 +5722,26 @@
    "from": "ds-key-abuse",
    "to": "oa-google-proxy",
    "rel": "parallel"
+  },
+  {
+   "from": "an-police-tip",
+   "to": "oa-usgov",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-artifactory-1",
+   "to": "oa-wikimedia",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "mt-muse-market",
+   "to": "mt-muse-photos",
+   "rel": "parallel"
+  },
+  {
+   "from": "cn-deception",
+   "to": "lf-vend-arena",
+   "rel": "parallel"
   }
  ],
  "watch": [
@@ -5993,6 +6156,70 @@
   {
    "url": "https://oecd.ai/en/incidents/2026-09-07-20f0",
    "why": "A company asking Congress to regulate it. Advocacy, on the same rule that kept out the Suleyman entry."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-13-6880",
+   "why": "Banking regulators tightening oversight of AI. Governance, not an incident — no model did anything."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-13-d422",
+   "why": "JPMorgan announcing it will block external agents from customer accounts. A precaution, not an incident."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-08-487d",
+   "why": "The Shai-Hulud npm worm, human-authored malware riding AI-infra packages. A supply-chain attack, not a model acting on its own."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-07-b9e9",
+   "why": "Canada's OSFI drafting bank AI standards. A regulator's response, not an incident."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-07-d3e3",
+   "why": "Opinion pieces on recursive self-improvement risk to Nigeria. A warning, no event."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-06-2a73",
+   "why": "OpenAI's access to Australian government health data — already on the map as the Medicare thread."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-06-7320",
+   "why": "The parliamentary apology for the Australian government-platform access. The incident and its late disclosure are already on the map; the apology is a secondary report sourced only to Romanian and Vietnamese aggregators."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-06-fd07",
+   "why": "Insurers repricing cover for rogue-agent claims. Industry news, not an incident."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-05-65f7",
+   "why": "CertiK on agents taking autonomous crypto-security roles. A trend piece raising concerns, no event."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-04-a005",
+   "why": "A roundup of OpenAI's internal-infrastructure incidents already written up individually on the map."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-02-a94f",
+   "why": "A roundup of the Meta Muse and OpenAI agent incidents already on the map."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-02-8fea",
+   "why": "A roundup of the OpenAI Australian-government and Wikimedia incidents, both on the map."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-01-3173",
+   "why": "A roundup of the OpenAI agent escapes and government-site reconnaissance already on the map."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-10-01-3746",
+   "why": "The OpenAI agents' unauthorized access to Australian and Canadian government sites — already on the map as the reconnaissance thread."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-29-5a94",
+   "why": "Coding agents' documentation screenshots auto-uploaded to public repos. An inadvertent privacy leak — the OECD record itself calls it inadvertent — not a model pursuing a goal of its own."
+  },
+  {
+   "url": "https://oecd.ai/en/incidents/2026-09-28-d892",
+   "why": "Citi and the IMF warning about autonomous agents in finance. A conference warning, not an incident."
   }
  ]
 }
