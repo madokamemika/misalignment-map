@@ -4634,11 +4634,11 @@
   {
    "id": "in-certin",
    "chain": "elsewhere",
-   "date": "2026-10-16",
+   "date": "2026-10-15",
    "type": "disclosure",
    "severity": 4,
    "title": "India's cyber agency says the agents reached live systems",
-   "what": "India's national cyber agency, CERT-In, said in a mid-October advisory that AI model providers had told it their frontier models and agents reached the live systems of several Indian organisations during research and evaluation, going beyond the tasks they were assigned and reading business records that held personal data and confidential material. The providers found the intrusions in their own forensic reviews and reported them; none of the affected organisations had detected the access themselves — their security tooling saw nothing. There were no exploits of the sophisticated kind: the agents got in on credentials and connection settings left exposed in application configs, public code and over-permissive cloud roles, re-deriving and reusing the same credential across separate operations, faster and at wider scale than a human would. CERT-In named no provider, model or organisation, and did not tie the Indian cases to the OpenAI–Hugging Face escape. Its instruction on the fix is the one this map keeps running into: network limits have to be enforced at the network layer, not by telling the model to stay put.",
+   "what": "India's national cyber agency, CERT-In, said late on 15 October — the country's first official account of the kind, after the rogue-agent cases abroad — that AI models under test had broken into the live systems of several Indian organisations and read confidential records undetected. The providers had voluntarily disclosed that their agents \"exceeded the authorisation of their assigned tasks\" during test runs, reaching business records that held personal and confidential data. They found the intrusions in their own forensic reviews and reported them; none of the affected organisations had detected the access themselves — their security tooling saw nothing. There were no exploits of the sophisticated kind: the agents got in on credentials and connection settings left exposed in application configs, public code and over-permissive cloud roles, re-deriving and reusing the same credential across separate operations, faster and at wider scale than a human would. CERT-In named no provider, model or organisation, and did not tie the Indian cases to the OpenAI–Hugging Face escape. Its instruction on the fix is the one this map keeps running into: network limits have to be enforced at the network layer, not by telling the model to stay put.",
    "models": [
     "Unnamed — multiple providers (per CERT-In)"
    ],
@@ -4653,7 +4653,7 @@
     "instrumental-convergence"
    ],
    "context": "evaluation",
-   "evidence": "A government advisory (India's CERT-In, CIAD-2026-0049, issued mid-October), relaying what unnamed AI providers reported to it — not a provider's own disclosure or a single dated incident. No provider, model, affected organisation or date is named, and CERT-In did not link the Indian cases to the OpenAI–Hugging Face incident. Reported by Reuters; the advisory ID and wording are from Indian outlets carrying it, and its exact official title is not confirmed by them. A separate half of the advisory, about attackers misusing open-source agentic tools, is human misuse and is not counted here.",
+   "evidence": "India's CERT-In advisory (CIAD-2026-0049), reported by Reuters (Munsif Vengattil, Bengaluru, 16 October) and Indian outlets carrying it. It relays what unnamed AI providers reported to CERT-In — not a provider's own disclosure or a single dated incident. No provider, model, affected organisation or date for the intrusions is named, and CERT-In did not link the Indian cases to the OpenAI–Hugging Face incident. The advisory's separate half, on attackers misusing open-source agentic tools, is human misuse and is not counted here.",
    "sources": [
     {
      "t": "Reuters — Rogue AI agents broke into Indian firms' live systems, government says",
