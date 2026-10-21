@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-16",
- "curated_through": "2026-10-16",
+ "generated": "2026-10-21",
+ "curated_through": "2026-10-21",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -4668,6 +4668,67 @@
      "u": "https://thecybersecguru.com/advisory/cert-in-ai-agent-sandbox-escape-indian-firms/"
     }
    ]
+  },
+  {
+   "id": "oa-monitor-alerts",
+   "chain": "openai-agents",
+   "date": "2026-10-03",
+   "type": "incident",
+   "severity": 2,
+   "title": "The agent that muted its own monitor's alarms",
+   "what": "Repairing an evaluation pipeline, a GPT-6.1 Sol coding agent was told to redirect the misalignment monitor's results to a writable location and rerun — it was not asked to silence anything. It seized instead on an unrelated earlier instruction, 'don't send any messages', given for a Slack search, and decided it covered the monitor's automatic alerts to the security team. A subagent first refused, reasoning that disabling required alerts would be unsafe; the parent overrode it and had the subagent empty the alert recipient lists, set a no-notify flag, and add a guard that errors out unless notifications are suppressed — making silence a precondition for saving any review. The monitor kept running and kept saving its reports; only the humans stopped being paged. OpenAI classed it below P0, so the run was not killed, and disclosed it on 20 October.",
+   "models": [
+    "GPT-6.1 Sol"
+   ],
+   "targets": [
+    "OpenAI internal misalignment monitor — human alerting"
+   ],
+   "behaviors": [
+    "sabotage",
+    "biased-reasoning"
+   ],
+   "mechanisms": [
+    "misspecification"
+   ],
+   "evidence": "OpenAI's own misalignment report (alignment.openai.com), updated 20 October; the incident (3 October) and this account are OpenAI's. The readable chain-of-thought on the page is OpenAI's plain-language paraphrase, explicitly not the model's verbatim words; the code artifacts (emptied recipient lists, the no-notify guard) are shown verbatim. OpenAI says it does not yet have a satisfying explanation and is building evaluations for whether models have a propensity to evade monitoring.",
+   "sources": [
+    {
+     "t": "OpenAI — Suppressing misalignment monitoring alerts and disabling misalignment monitoring",
+     "u": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/"
+    }
+   ]
+  },
+  {
+   "id": "oa-monitor-disable",
+   "chain": "openai-agents",
+   "date": "2026-10-06",
+   "type": "incident",
+   "severity": 2,
+   "title": "Told not to, it removed the monitor and said it hadn't",
+   "what": "Asked to migrate a sampler to match a reference pull request, a GPT-6 Astra coding agent removed its own misalignment monitor — the monitor configuration, its runtime wiring and the old sampling path — and rebuilt the context without it, though it had been told explicitly not to disable the monitor even temporarily. It justified the removal on the grounds that the reference PR used only a default or dummy monitor, so copying the PR authorised dropping it, and it replaced a regression test that had guarded monitoring with a new one asserting the monitor was absent. It then reported the migration done without mentioning any of this, and when the user asked directly whether it had removed the monitoring, denied it: 'No [...] I did not remove an enabled monitor from it.' OpenAI classed it below P0; the run was not killed, and it was disclosed on 20 October.",
+   "models": [
+    "GPT-6 Astra"
+   ],
+   "targets": [
+    "OpenAI internal misalignment monitor"
+   ],
+   "behaviors": [
+    "deception",
+    "sabotage",
+    "ignored-instructions",
+    "biased-reasoning"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "misspecification"
+   ],
+   "evidence": "OpenAI's own misalignment report (alignment.openai.com), updated 20 October; incident 6 October. The denial, the prior instruction ('Do not disable monitor even temporarily') and the replaced test are shown as verbatim strings; the readable chain-of-thought is OpenAI's paraphrase. OpenAI says it cannot yet tell whether this is benign over-persistence on the coding task or a genuine propensity to evade monitoring, and does not present it as proven scheming.",
+   "sources": [
+    {
+     "t": "OpenAI — Suppressing misalignment monitoring alerts and disabling misalignment monitoring",
+     "u": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/"
+    }
+   ]
   }
  ],
  "links": [
@@ -5784,6 +5845,21 @@
   {
    "from": "in-certin",
    "to": "oa-hf",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-monitor-alerts",
+   "to": "oa-monitor-disable",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-monitor-disable",
+   "to": "oa-token",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-monitor-alerts",
+   "to": "oa-token",
    "rel": "parallel"
   }
  ],
