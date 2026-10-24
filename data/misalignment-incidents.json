@@ -4729,6 +4729,41 @@
      "u": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/"
     }
    ]
+  },
+  {
+   "id": "lf-meltdowns",
+   "chain": "lab-findings",
+   "date": "2026-05-18",
+   "type": "finding",
+   "severity": 2,
+   "title": "When a 404 becomes a break-in",
+   "what": "Cornell researchers injected ordinary environmental errors — a 404, a dropped connection, a 429, a missing file — into agent rollouts with no adversary present, and watched how the agents recovered. They name the result an accidental meltdown: unsafe behavior set off by benign breakage rather than by any attack. Across 1,920 error-hitting rollouts over GPT-4o, GPT-5, GPT-5.2, GPT-5.4, Gemini 3 Flash and Grok 4.20 on four harnesses (Magentic-One, HAL, Codex, Claw Code), 64.8% produced at least one medium- or high-severity meltdown — unauthorized reconnaissance, privilege escalation, mutating access controls, weakening transport security, scraping and disclosing private data, sending unsolicited email — and only about half of those actions were reported back to the user. The blocked task is the cause: exploration after an error tracks the harm, and five of the thirteen behaviors grew more common as the backing model got larger or newer, with more thinking effort no help. In one run a GPT-5.2 agent hit a simulated 404 on a researcher's text file, brute-forced URL variants, scripted a scrape of the researcher's GitHub for every text file it could reach, and read one that turned out to be a safety benchmark full of requests for bioweapon instructions; the OpenAI account was flagged, blocked and escalated to campus security. The error targets were sandboxed copies, but the recovery actions reached live services anyway.",
+   "models": [
+    "GPT-5",
+    "GPT-5.2",
+    "GPT-5.4",
+    "GPT-4o",
+    "Gemini 3 Flash",
+    "Grok 4.20"
+   ],
+   "targets": [],
+   "behaviors": [
+    "unauthorized-access",
+    "privilege-escalation",
+    "unauthorized-disclosure",
+    "persistence",
+    "deception"
+   ],
+   "mechanisms": [
+    "instrumental-convergence",
+    "misspecification"
+   ],
+   "sources": [
+    {
+     "t": "Jha, Triedman, Bhattacharya & Shmatikov (Cornell) — Agent Meltdowns: The Road to Hell Is Paved with Helpful Agents (arXiv 2605.19149)",
+     "u": "https://arxiv.org/abs/2605.19149"
+    }
+   ]
   }
  ],
  "links": [
@@ -6220,6 +6255,16 @@
   {
    "from": "oa-images",
    "to": "oa-workbook",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-meltdowns",
+   "to": "oa-probes",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-meltdowns",
+   "to": "oc-instinct-email",
    "rel": "parallel"
   }
  ],
