@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-21",
- "curated_through": "2026-10-21",
+ "curated_through": "2026-10-24",
  "license": "The corpus — episode text, links, chains, mechanism definitions — is MIT, (c) Veronica, https://github.com/madokamemika/misalignment-map/blob/main/LICENSE. Sources cited on each episode keep their own terms and must stay credited; quotations inside an episode belong to whoever wrote them.",
  "feed_placed": [
   "https://oecd.ai/en/incidents/2026-09-05-de7c",
@@ -5860,6 +5860,366 @@
   {
    "from": "oa-monitor-alerts",
    "to": "oa-token",
+   "rel": "parallel"
+  },
+  {
+   "from": "ph-sydney",
+   "to": "oc-hitpiece",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "ph-characterai",
+   "to": "ph-raine",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "ph-characterai",
+   "to": "ph-gemini",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "ph-raine",
+   "to": "ph-meta-teens",
+   "rel": "parallel"
+  },
+  {
+   "from": "ph-sycophancy",
+   "to": "ph-gemini",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-believed-real",
+   "to": "an-pypi",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-insider",
+   "to": "ca-replit",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-insider",
+   "to": "cn-deception",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "lf-espionage",
+   "to": "lf-whistleblower",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-selfrep",
+   "to": "lf-shutdown-resistance",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "oc-operator-buy",
+   "to": "oc-yue",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "ca-replit",
+   "to": "ca-kimi-mysql",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-paste",
+   "to": "oa-workbook",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-antigravity",
+   "to": "ca-zcode",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-antigravity",
+   "to": "ca-sol-home",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-upward-deceivers",
+   "to": "cn-deception",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-upward-deceivers",
+   "to": "oa-github-key",
+   "rel": "parallel"
+  },
+  {
+   "from": "rd-waymo-recall",
+   "to": "rd-cruise-after",
+   "rel": "parallel"
+  },
+  {
+   "from": "cn-mimo-git",
+   "to": "mt-kimi",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-ctf-jan",
+   "to": "oa-irregular-ctf",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-ctf-jan",
+   "to": "gg-three-cos",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-ctf-jan",
+   "to": "an-opus47",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-yue",
+   "to": "oa-compaction",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-datatalks",
+   "to": "ca-pocketos",
+   "rel": "parallel"
+  },
+  {
+   "from": "cn-qwen-git",
+   "to": "mt-rome",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-urlquery",
+   "to": "oa-shortener",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-unctad",
+   "to": "oa-google-proxy",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-meta-forum",
+   "to": "oc-hitpiece",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-cowork-photos",
+   "to": "oc-certfr",
+   "rel": "response-to"
+  },
+  {
+   "from": "an-three-orgs",
+   "to": "oa-irregular-ctf",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-pocketos",
+   "to": "ca-sol-prod",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-rubygems",
+   "to": "ai-runs",
+   "rel": "parallel"
+  },
+  {
+   "from": "gg-three-cos",
+   "to": "mt-muse-spark",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-dsewiki",
+   "to": "oa-webdav",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "oa-github-key",
+   "to": "oa-usgov",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-fbi",
+   "to": "oa-usgov",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-token",
+   "to": "oa-unctad",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-lac",
+   "to": "oa-education",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-education",
+   "to": "oa-usgov",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-google-proxy",
+   "to": "oa-wikimedia",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-selfrep-injection",
+   "to": "oa-compaction",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-webdav",
+   "to": "oa-blackhat",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-infra",
+   "to": "oa-hf",
+   "rel": "same-campaign"
+  },
+  {
+   "from": "ca-sol-home",
+   "to": "ca-zcode",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-sol-prod",
+   "to": "ca-supabase",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-mislabel",
+   "to": "lf-peer-preservation",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-compaction",
+   "to": "lf-mind-virus",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-collatz-lean",
+   "to": "dm-exploit",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-collatz-lean",
+   "to": "ai-cheating",
+   "rel": "parallel"
+  },
+  {
+   "from": "ai-runs",
+   "to": "lf-selfrep-injection",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-irregular-ctf",
+   "to": "mt-muse-spark",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-instinct-email",
+   "to": "oc-yue",
+   "rel": "parallel"
+  },
+  {
+   "from": "an-metr",
+   "to": "oa-metr-agreed",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-fbi",
+   "to": "oa-shortener-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-google-proxy",
+   "to": "oa-shortener-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-probes",
+   "to": "oa-urlquery-public",
+   "rel": "disclosure-of"
+  },
+  {
+   "from": "oa-medicare-notify",
+   "to": "an-police-tip",
+   "rel": "parallel"
+  },
+  {
+   "from": "lf-emergence",
+   "to": "oa-webdav",
+   "rel": "parallel"
+  },
+  {
+   "from": "gg-three-cos-public",
+   "to": "an-disclose-3",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-medicare-taskforce",
+   "to": "oa-canada-response",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-hawley",
+   "to": "oa-casar",
+   "rel": "parallel"
+  },
+  {
+   "from": "ca-zcode",
+   "to": "ca-pocketos",
+   "rel": "parallel"
+  },
+  {
+   "from": "mt-muse-photos",
+   "to": "oa-images",
+   "rel": "parallel"
+  },
+  {
+   "from": "oc-operator-buy",
+   "to": "mt-muse-market",
+   "rel": "precedent-for"
+  },
+  {
+   "from": "mt-muse-market",
+   "to": "oc-instinct-email",
+   "rel": "parallel"
+  },
+  {
+   "from": "in-certin",
+   "to": "an-three-orgs",
+   "rel": "parallel"
+  },
+  {
+   "from": "in-certin",
+   "to": "gg-three-cos",
+   "rel": "parallel"
+  },
+  {
+   "from": "ds-key-abuse",
+   "to": "ai-cheating",
+   "rel": "parallel"
+  },
+  {
+   "from": "ds-key-abuse",
+   "to": "mt-kimi",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-monitor-disable",
+   "to": "ca-replit",
+   "rel": "parallel"
+  },
+  {
+   "from": "tc-amap",
+   "to": "oa-states",
+   "rel": "parallel"
+  },
+  {
+   "from": "oa-images",
+   "to": "oa-workbook",
    "rel": "parallel"
   }
  ],
