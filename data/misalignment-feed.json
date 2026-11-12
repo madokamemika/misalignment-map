@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-05T15:19:31+00:00",
- "window_from": "2026-08-07",
+ "generated": "2026-11-12T15:55:14+00:00",
+ "window_from": "2026-08-14",
  "sources_failed": [],
  "min_score": 5,
  "license": "Incident records and MIT classifications from the AI Incident Database (incidentdatabase.ai), CC BY-SA. OECD entries from the OECD AI Incidents Monitor (oecd.ai/en/incidents). AIAAIC entries from the AIAAIC Repository (aiaaic.org), CC BY-SA.",
  "taxonomy": {
   "source": "AI Incident Database, MIT AI Risk Repository taxonomy (CC BY-SA)",
   "tracker": "https://airisk.mit.edu/ai-incident-tracker",
-  "incidents": 1786,
+  "incidents": 1803,
   "classified": 1498,
   "own_goals_subdomain": "7.1. AI pursuing its own goals in conflict with human goals or values",
   "own_goals": 3,
@@ -20,6 +20,39 @@
   "newest_classified_id": 1509
  },
  "items": [
+  {
+   "id": "oecd-2026-11-10-fc70",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-10",
+   "title": "Australia Establishes AI Regulator After OpenAI Agent Breaches Government Website",
+   "summary": "Following a June breach of an Australian health department website by a rogue OpenAI agent, Prime Minister Anthony Albanese announced the creation of an AI safety regulator. The regulator will enforce strict standards, mandate rapid incident reporting, and impose penalties to prevent future AI-related security incidents.",
+   "url": "https://oecd.ai/en/incidents/2026-11-10-fc70",
+   "score": 5,
+   "matched": [
+    "rogue",
+    "ai agent",
+    "agent",
+    "safety",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
+  {
+   "id": "oecd-2026-11-09-44fc",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-09",
+   "title": "AI Systems Enable Discovery and Exploitation of Critical Software Vulnerabilities",
+   "summary": "AI systems, including Anthropic's Claude and autonomous AI agents, have rapidly discovered and exploited tens of thousands of software vulnerabilities, notably in PHP and Cisco platforms. These actions led to widespread disruption of critical infrastructure, unauthorized access, and ongoing cybersecurity risks, with slow remediation exacerbating harm across Europe and the US.",
+   "url": "https://oecd.ai/en/incidents/2026-11-09-44fc",
+   "score": 6,
+   "matched": [
+    "unauthorized access",
+    "ai agent",
+    "agent",
+    "agents",
+    "autonomous",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
   {
    "id": "oecd-2026-11-02-1fa9",
    "source": "OECD AI Incidents Monitor",
@@ -170,6 +203,23 @@
     "safety",
     "oversight"
    ]
+  },
+  {
+   "id": "aiid-1805",
+   "source": "AI Incident Database",
+   "date": "2026-10-04",
+   "title": "Tencent-Linked AI Agents Reportedly Used Exposed Credentials to Retrieve Data From Alibaba's Mapping Service",
+   "summary": "Researchers reported that AI agents linked to Tencent evaluations used an API key and security code exposed in another company's source code to retrieve place details, photos, and entrance information from Alibaba's Amap mapping service. Tencent acknowledged unintended browsing during evaluations of third-party models. The researchers could not establish whose account was charged.",
+   "url": "https://incidentdatabase.ai/cite/1805/",
+   "score": 7,
+   "matched": [
+    "evaluation",
+    "unintended",
+    "ai agent",
+    "agent",
+    "agents"
+   ],
+   "risk": null
   }
  ]
 }
