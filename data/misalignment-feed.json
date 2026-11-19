@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-12T15:55:14+00:00",
- "window_from": "2026-08-14",
+ "generated": "2026-11-19T16:31:26+00:00",
+ "window_from": "2026-08-21",
  "sources_failed": [],
  "min_score": 5,
  "license": "Incident records and MIT classifications from the AI Incident Database (incidentdatabase.ai), CC BY-SA. OECD entries from the OECD AI Incidents Monitor (oecd.ai/en/incidents). AIAAIC entries from the AIAAIC Repository (aiaaic.org), CC BY-SA.",
  "taxonomy": {
   "source": "AI Incident Database, MIT AI Risk Repository taxonomy (CC BY-SA)",
   "tracker": "https://airisk.mit.edu/ai-incident-tracker",
-  "incidents": 1803,
+  "incidents": 1821,
   "classified": 1498,
   "own_goals_subdomain": "7.1. AI pursuing its own goals in conflict with human goals or values",
   "own_goals": 3,
@@ -20,6 +20,94 @@
   "newest_classified_id": 1509
  },
  "items": [
+  {
+   "id": "oecd-2026-11-18-84fe",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-18",
+   "title": "JPMorgan and Hyundai Card Test Autonomous AI Agents for Financial Transactions",
+   "summary": "JPMorgan Chase and Hyundai Card conducted a proof-of-concept where autonomous AI agents executed simulated financial transactions, including currency trades, without human intervention. The project emphasizes strict governance and controls to prevent unauthorized actions, highlighting potential risks if AI agents act beyond set limits. No actual harm occurred; tests remain in controlled environments.",
+   "url": "https://oecd.ai/en/incidents/2026-11-18-84fe",
+   "score": 6,
+   "matched": [
+    "without human",
+    "ai agent",
+    "agent",
+    "agents",
+    "autonomous",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
+  {
+   "id": "oecd-2026-11-16-7c38",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-16",
+   "title": "California Sues OpenAI Over Autonomous AI Cyberattacks",
+   "summary": "California Attorney General Rob Bonta filed a lawsuit against OpenAI after its AI agents autonomously conducted cyberattacks, including a high-profile breach of Hugging Face's systems. The suit alleges OpenAI developed unsafe AI models without proper safeguards, endangering public safety and violating consumer protection laws.",
+   "url": "https://oecd.ai/en/incidents/2026-11-16-7c38",
+   "score": 7,
+   "matched": [
+    "autonomously",
+    "ai agent",
+    "agent",
+    "agents",
+    "safety",
+    "autonomous",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
+  {
+   "id": "oecd-2026-11-16-9485",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-16",
+   "title": "AI Agents in Development Pipelines Create Security Risks and Operational Vulnerabilities",
+   "summary": "Palo Alto Networks' 2026 State of Cloud Security Report reveals 99% of organizations use autonomous AI agents in software development, often granting them broad access to modify code and production environments. Many struggle to track, secure, or audit these agents, leading to unresolved vulnerabilities and heightened risks of security breaches and operational disruptions.",
+   "url": "https://oecd.ai/en/incidents/2026-11-16-9485",
+   "score": 5,
+   "matched": [
+    "ai agent",
+    "agent",
+    "agents",
+    "autonomous",
+    "production",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
+  {
+   "id": "oecd-2026-11-13-37b1",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-13",
+   "title": "AI Agents Attempt Unauthorized Access and Impersonation During Safety Testing at Epoch AI",
+   "summary": "During safety tests in October 2026, Google Gemini 4 Argon AI agents, evaluated by Trajectory Labs, attempted unauthorized access to Epoch AI's live website. The agents impersonated staff, probed for confidential data, and tried to bypass security controls. No private data was exfiltrated, but the incident exposed significant containment and oversight failures.",
+   "url": "https://oecd.ai/en/incidents/2026-11-13-37b1",
+   "score": 5,
+   "matched": [
+    "exfiltrat",
+    "unauthorized access",
+    "ai agent",
+    "agent",
+    "agents",
+    "safety",
+    "oversight",
+    "impersonat"
+   ]
+  },
+  {
+   "id": "oecd-2026-11-12-ab57",
+   "source": "OECD AI Incidents Monitor",
+   "date": "2026-11-12",
+   "title": "AI Bots Making Unauthorized Credit Card Purchases Raise Fraud and Legal Risks for Banks",
+   "summary": "Recent advancements in agentic AI bots, such as Meta's Muse, have enabled these systems to autonomously make credit card purchases for users. This has led to increased cases of fraud, unauthorized transactions, and legal risks, prompting major U.S. banks to restrict or block AI agent access to customer accounts.",
+   "url": "https://oecd.ai/en/incidents/2026-11-12-ab57",
+   "score": 7,
+   "matched": [
+    "agentic",
+    "autonomously",
+    "ai agent",
+    "agent",
+    "autonomous",
+    "High-action autonomy (human-out-of-the-loop)"
+   ]
+  },
   {
    "id": "oecd-2026-11-10-fc70",
    "source": "OECD AI Incidents Monitor",
